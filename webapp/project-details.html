@@ -1,0 +1,98 @@
+<!-- 상세페이지 -->
+
+<style>
+  .detail-wrapper {
+    height: 100%;
+    margin: 0 auto;
+  }
+  .detail-container {
+    display: flex;
+    align-items: center;
+    height: 100%;
+  }
+  .detail-table-wrapper {
+    margin: 0 auto;
+  }
+  .detail-table {
+    width: 70%;
+    text-align: center;
+    border: 1px solid #fff;
+    border-spacing: 1px;
+    font-family: "Cairo", sans-serif;
+    margin: auto;
+  }
+  .detail-table caption {
+    font-weight: bold;
+  }
+  .detail-table td {
+    padding: 10px;
+    background-color: #eee;
+  }
+  .detail-table th {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+  }
+  .detail-table img {
+    width: 90px;
+    height: 90px;
+  }
+  .to-add,
+  .to-basket {
+    border: none;
+    padding: 5px 10px;
+    color: #fff;
+    font-weight: bold;
+  }
+  .to-add {
+    background-color: #03a9f4;
+  }
+  .to-basket {
+    background-color: #e91e63;
+  }
+  .detail-table .tablefoot {
+    padding: 0;
+    border-bottom: 3px solid #009688;
+  }
+</style>
+
+<div class="detail-wrapper">
+  <div class="detail-table-wrapper">
+    <table class="detail-table">
+      <thead>
+        <tr>
+          <th width="15%">책 이미지</th>
+          <th width="20%">제목</th>
+          <th width="15%">저자</th>
+          <th width="15%">가격</th>
+          <th width="10%">리뷰</th>
+          <th width="25%">비고</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><img src="/images/book1.png" alt="bookimg" /></td>
+          <td>토비의스프zzzzzzzzzzzzzzzzzzzzz링</td>
+          <td>토비</td>
+          <td>120000원</td>
+          <td>3개</td>
+          <td>
+            <button class="to-add">즉시구매</button>
+            <button class="to-basket">장바구니</button>
+          </td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <td colspan="6" class="tablefoot"></td>
+      </tfoot>
+    </table>
+  </div>
+  <div class="detail-book-intro">
+    <textarea name="" id="" rows="10" cols="10"></textarea>
+  </div>
+  <div class="detail-review">
+    <h3>리뷰</h3>
+    <span class="review-id">이승진님</span>
+    <span class="review">너무 잘봤습니다</span>
+  </div>
+</div>
