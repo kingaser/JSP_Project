@@ -1,0 +1,224 @@
+body,
+html {
+  height: 100%; /* 전체 높이를 100%로 설정 */
+  margin: 0;
+  padding: 0;
+  display: flex; /* flexbox 사용 */
+  flex-direction: column; /* 위에서 아래로 요소를 정렬 */
+}
+/* 부분별 페이지 길이 */
+
+.header {
+  height: 9%;
+}
+main {
+  flex: 1 0 auto; /* main 영역이 나머지 공간을 차지하게 함 */
+}
+footer {
+  flex-shrink: 0; /* footer 크기가 줄어들지 않게 설정 */
+}
+/* 헤더 예비 */
+/* .header-menu a {
+  color: black;
+  display: inline-block;
+  margin-left: 16px;
+  font-size: 18px;
+
+  text-decoration: none;
+} */
+/* .header-menu a:hover {
+  font-weight: bold;
+  text-decoration: underline;
+} */
+
+/* 헤더 */
+.header-container {
+  background-color: rgb(175, 196, 238);
+  padding-left: 10%;
+  padding-right: 10%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-menu a:hover,
+.header-menu a:focus {
+  font-weight: bold;
+  outline: none;
+}
+
+.header-menu a {
+  color: black;
+  padding: 15px 25px;
+  position: relative;
+  display: inline-block;
+  text-decoration: none;
+}
+
+.header-menu a:after {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: #ddddff;
+  content: "";
+  opacity: 0;
+  -webkit-transition: height 0.3s, opacity 0.3s, -webkit-transform 0.3s;
+  -moz-transition: height 0.3s, opacity 0.3s, -moz-transform 0.3s;
+  transition: height 0.3s, opacity 0.3s, transform 0.3s;
+  -webkit-transform: translateY(-10px);
+  -moz-transform: translateY(-10px);
+  transform: translateY(-10px);
+}
+
+.header-menu a:hover:after,
+.header-menu a:focus:after {
+  height: 5px;
+  opacity: 1;
+  -webkit-transform: translateY(0px);
+  -moz-transform: translateY(0px);
+  transform: translateY(0px);
+}
+
+/* 푸터 */
+.footer-container {
+  background-color: rgb(175, 196, 238);
+  padding-left: 10%;
+  padding-right: 10%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* 마이페이지 - 구매목록 */
+.purchase-list-table {
+  border: 1px #a39485 solid;
+  font-size: 0.9em;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.purchase-list-table th {
+  text-align: left;
+}
+
+.purchase-list-table thead {
+  font-weight: bold;
+  /* color: #fff; */
+  color: black;
+  /* background: #73685d; */
+  background: rgb(175, 196, 238);
+}
+
+.purchase-list-table td,
+th {
+  padding: 1em 0.5em;
+  vertical-align: middle;
+}
+
+.purchase-list-table td {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  background: #fff;
+}
+
+.purchase-list-wrapper {
+  width: 80%;
+  margin: 0 auto;
+  height: auto;
+}
+.purchase-list-title {
+  font-size: 3em;
+  font-weight: 300;
+  line-height: 1em;
+  text-align: center;
+  color: black;
+}
+
+.purchase-list-subtitle {
+  font-size: 1.5em;
+  font-weight: 300;
+  text-align: center;
+  display: block;
+  line-height: 1em;
+  padding-bottom: 2em;
+  color: black;
+}
+.purchase-list-table .align-center {
+  text-align: center;
+}
+.purchase-list-wrapper {
+  width: 70%;
+}
+
+/* 마이페이지 - 장바구니 */
+.basket-table {
+  border: 1px #a39485 solid;
+  font-size: 0.9em;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.basket-table th {
+  text-align: left;
+}
+
+.basket-table thead {
+  font-weight: bold;
+  color: #fff;
+  background: #73685d;
+}
+
+.basket-table td,
+th {
+  padding: 1em 0.5em;
+  vertical-align: middle;
+}
+
+.basket-table td {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  background: #fff;
+}
+
+.basket-wrapper {
+  width: 70%;
+  margin: 0 auto;
+}
+.basket-title {
+  font-size: 3em;
+  font-weight: 300;
+  line-height: 1em;
+  text-align: center;
+  color: black;
+}
+
+.basket-subtitle {
+  font-size: 1.5em;
+  font-weight: 300;
+  text-align: center;
+  display: block;
+  line-height: 1em;
+  padding-bottom: 2em;
+  color: black;
+}
+.basket-table th {
+  border-bottom: 1px solid #a39485;
+}
+
+.basket-table td {
+  border-bottom: 1px solid #e5e5e5;
+}
+.basket-table td,
+th {
+  padding: 1em 0.5em;
+  vertical-align: middle;
+}
+.basket-table .align-center {
+  text-align: center;
+}
