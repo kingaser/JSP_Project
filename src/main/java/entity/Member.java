@@ -4,22 +4,23 @@ public class Member {
 
 	private int memberId;
 	private String username;
-	private String password;
+	private String passwd;
 	private String address;
-	private String phoneNumber;
+	private String tel;
 	private String role;
-
-	public Member(String username, String password, String address, String phoneNumber, String role) {
-		// TODO Auto-generated constructor stub
-		username = this.username;
-		password = this.password;
-		address = this.address;
-		phoneNumber = this.phoneNumber;
-		role = this.role;
-	}
 
 	public Member() {
 		// TODO Auto-generated constructor stub
+	}
+
+	public Member(int memberId, String username, String passwd, String address, String tel, String role) {
+		super();
+		this.memberId = memberId;
+		this.username = username;
+		this.passwd = passwd;
+		this.address = address;
+		this.tel = tel;
+		this.role = role;
 	}
 
 	public int getMemberId() {
@@ -38,12 +39,12 @@ public class Member {
 		this.username = username;
 	}
 
-	public String getPassword() {
-		return password;
+	public String getPasswd() {
+		return passwd;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public void setPasswd(String passwd) {
+		this.passwd = passwd;
 	}
 
 	public String getAddress() {
@@ -54,12 +55,12 @@ public class Member {
 		this.address = address;
 	}
 
-	public String getPhoneNumber() {
-		return phoneNumber;
+	public String getTel() {
+		return tel;
 	}
 
-	public void setPhoneNumber(String phoneNumber) {
-		this.phoneNumber = phoneNumber;
+	public void setTel(String tel) {
+		this.tel = tel;
 	}
 
 	public String getRole() {
