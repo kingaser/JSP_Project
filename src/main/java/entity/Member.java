@@ -11,11 +11,11 @@ public class Member {
 
 	public Member(String username, String password, String address, String phoneNumber, String role) {
 		// TODO Auto-generated constructor stub
-		username = this.username;
-		password = this.password;
-		address = this.address;
-		phoneNumber = this.phoneNumber;
-		role = this.role;
+		this.username = username;
+		this.password = password;
+		this.address = address;
+		this.phoneNumber = phoneNumber;
+		this.role = role;
 	}
 
 	public Member() {

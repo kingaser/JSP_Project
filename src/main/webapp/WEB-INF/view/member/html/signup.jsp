@@ -1,3 +1,9 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+         pageEncoding="EUC-KR"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,11 +16,11 @@
 <img src="/images/logo.jpg" alt="">
 <div class="container" id="container">
     <div class="form-container sign-in-container">
-        <form action="#">
+        <form action="member/html/signup.jsp" method="post">
             <h1>Information</h1>
             <input type="text" placeholder="Id"/>
             <input type="password" placeholder="Password"/>
-            <input type="number" placeholder="Phone Number"/>
+            <input type="number" placeholder="PhoneNumber"/>
             <input type="text" placeholder="Address"/>
             <button>Sign up</button>
         </form>
@@ -23,7 +29,7 @@
         <div class="overlay">
             <div class="overlay-panel overlay-left">
                 <h1>Welcome!</h1>
-                <p>7DAYSì—ì„œ<br/><br/>ê³µë¶€ë¥¼ ì‹œìž‘í•´ìš”!</p>
+                <p>7DAYS¿¡¼­<br/><br/>°øºÎ¸¦ ½ÃÀÛÇØ¿ä!</p>
                 <button class="ghost" id="signUp">Log in</button>
             </div>
         </div>

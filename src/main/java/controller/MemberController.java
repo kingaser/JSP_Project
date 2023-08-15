@@ -2,15 +2,10 @@ package controller;
 
 import java.io.IOException;
 
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
 import entity.Member;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.*;
 import service.MemberService;
 
 /**
@@ -18,77 +13,79 @@ import service.MemberService;
  */
 @WebServlet("/member")
 public class MemberController extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-	}
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+    }
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
-		response.setCharacterEncoding("UTF-8");
-		response.setContentType("text/html; charset=UTF-8");
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
+        response.setContentType("text/html; charset=UTF-8");
 
-		String str = "";
-		String command = request.getParameter("command");
+        String str = "";
+        String command = request.getParameter("command");
 
-		if (command.equals("signup")) {
+        if (command.equals("signup")) {
+            str = "/WEB-INF/view/member/signup.jsp";
+            request.getRequestDispatcher(str).forward(request, response);
 
-			String username = request.getParameter("username");
-			String password = request.getParameter("passowrd");
-			String address = request.getParameter("address");
-			String phoneNumber = request.getParameter("phoneNumber");
-			String role = request.getParameter("role");
+            String username = request.getParameter("username");
+            String password = request.getParameter("password");
+            String address = request.getParameter("address");
+            String phoneNumber = request.getParameter("phoneNumber");
+            String role = request.getParameter("role");
 
-			Member m = new Member();
-			m.setUsername(username);
-			m.setPassword(password);
-			m.setAddress(address);
-			m.setPhoneNumber(phoneNumber);
-			m.setRole(role);
+            Member m = new Member();
+            m.setUsername(username);
+            m.setPassword(password);
+            m.setAddress(address);
+            m.setPhoneNumber(phoneNumber);
+            m.setRole(role);
 
-			MemberService ser = new MemberService();
-			int result = ser.register(m);
+            MemberService ser = new MemberService();
+            int result = ser.register(m);
 
-			if (result > 0) {
-				System.out.println("È¸¿ø°¡ÀÔ ¼º°ø");
-				str = "/WEB-INF/view/member/login.jsp";
-			} else {
-				System.out.println("È¸¿ø°¡ÀÔ ½ÇÆĞ");
-				str = "/WEB-INF/view/member/signup.jsp";
-			}
-			// forward
-			request.getRequestDispatcher(str).forward(request, response);
-		} else if (command.equals("login")) {
-			String username = request.getParameter("username");
-			String password = request.getParameter("password");
-			if (username != null && !username.equals("")) {
-				Cookie c = new Cookie("username", username);
-				c.setMaxAge(1 * 1 * 60 * 60); // ¸¸·á ±â°£ 1½Ã°£(ÃÊ´ÜÀ§ ÀÛ¼º)
-				response.addCookie(c);
-			} else {
-				Cookie c = new Cookie("username", username);
-				c.setMaxAge(0); // 0ÃÊ
-				response.addCookie(c);
-			}
-			Member m = new Member();
-			m.setUsername(username);
-			m.setPassword(password);
+            if (result > 0) {
+                System.out.println("íšŒì›ê°€ì… ì„±ê³µ");
+                str = "/WEB-INF/view/member/login.jsp";
+            } else {
+                System.out.println("íšŒì›ê°€ì… ì‹¤íŒ¨");
+                str = "/WEB-INF/view/member/signup.jsp";
+            }
+            // forward
+            request.getRequestDispatcher(str).forward(request, response);
+        } else if (command.equals("login")) {
+            String username = request.getParameter("username");
+            String password = request.getParameter("password");
+            if (username != null && !username.equals("")) {
+                Cookie c = new Cookie("username", username);
+                c.setMaxAge(1 * 1 * 60 * 60); // ë§Œë£Œ ê¸°ê°„ 1ì‹œê°„(ì´ˆë‹¨ìœ„ ì‘ì„±)
+                response.addCookie(c);
+            } else {
+                Cookie c = new Cookie("username", username);
+                c.setMaxAge(0); // 0ì´ˆ
+                response.addCookie(c);
+            }
+            Member m = new Member();
+            m.setUsername(username);
+            m.setPassword(password);
 
-			Member login = new MemberService().login(m);
+            Member login = new MemberService().login(m);
 
-			if (login != null) {
-				HttpSession session = request.getSession();
-				session.setAttribute("login", login);
-				System.out.println("·Î±×ÀÎ ¼º°ø");
-				str = "/WEB-INF/view/member/list.jsp";
-			} else {
-				System.out.println("·Î±×ÀÎ ½ÇÆĞ");
-				str = "/WEB-INF/view/member/login.jsp";
-			}
-			// forward
-			request.getRequestDispatcher(str).forward(request, response);
-		}
-	}
+            if (login != null) {
+                HttpSession session = request.getSession();
+                session.setAttribute("login", login);
+                System.out.println("ë¡œê·¸ì¸ ì„±ê³µ");
+                str = "/WEB-INF/view/member/html/list.jsp";
+            } else {
+                System.out.println("ë¡œê·¸ì¸ ì‹¤íŒ¨");
+                str = "/WEB-INF/view/member/login.jsp";
+            }
+            // forward
+            request.getRequestDispatcher(str).forward(request, response);
+        }
+    }
 }
