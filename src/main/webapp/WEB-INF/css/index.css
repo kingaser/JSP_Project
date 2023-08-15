@@ -1,0 +1,85 @@
+.logo-search-wrapper {
+  margin: 0 10%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  width: 250px;
+}
+.search {
+  width: 30%;
+  border: 1px solid black;
+  border-radius: 33px;
+  padding: 7px;
+  justify-content: space-between;
+}
+.search-input {
+  width: 65%;
+  border: none;
+  outline: none;
+}
+form.search-form {
+  margin-bottom: 0px;
+  display: flex;
+  justify-content: space-between;
+}
+.search-button {
+  width: 30%;
+  height: auto;
+  justify-content: right;
+  border: none;
+  background-color: black;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 33px;
+  cursor: pointer;
+  float: right;
+}
+.main-list-table-wrapper {
+  width: 70%;
+  margin: 30px auto;
+}
+
+.main-list-table {
+  width: 100%;
+  text-align: center;
+  border: 1px solid #fff;
+  border-spacing: 1px;
+  font-family: "Cairo", sans-serif;
+  margin: auto;
+}
+.main-list-table caption {
+  font-weight: bold;
+}
+.main-list-table td {
+  padding: 10px;
+  background-color: #eee;
+}
+.main-list-table th {
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+}
+.main-list-table img {
+  width: 90px;
+  height: 90px;
+}
+.to-add,
+.to-basket {
+  border: none;
+  padding: 5px 10px;
+  color: #fff;
+  font-weight: bold;
+}
+.to-add {
+  background-color: #03a9f4;
+}
+.to-basket {
+  background-color: #e91e63;
+}
+.main-list-table .tablefoot {
+  padding: 0;
+  border-bottom: 3px solid #009688;
+}

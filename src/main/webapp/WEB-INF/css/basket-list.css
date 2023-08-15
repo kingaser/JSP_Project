@@ -1,0 +1,98 @@
+/* 마이페이지 - 장바구니 */
+.basket-table {
+  border: 1px #a39485 solid;
+  font-size: 0.9em;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.basket-table th {
+  text-align: left;
+}
+
+.basket-table thead {
+  font-weight: bold;
+  color: #000;
+  background: rgb(175, 196, 238);
+}
+
+.basket-table td,
+th {
+  padding: 1em 0.5em;
+  vertical-align: middle;
+}
+
+.basket-table td {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  background: #fff;
+}
+
+.basket-wrapper {
+  width: 70%;
+  margin: 0 auto;
+}
+.basket-title {
+  font-size: 3em;
+  font-weight: 300;
+  line-height: 1em;
+  text-align: center;
+  color: black;
+}
+
+.basket-subtitle {
+  font-size: 1.5em;
+  font-weight: 300;
+  text-align: center;
+  display: block;
+  line-height: 1em;
+  padding-bottom: 2em;
+  color: black;
+}
+.basket-buttons {
+  margin: 0 4px 5px 4px;
+  height: 28px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.continue-shopping,
+.go-to-purchase-list,
+.basket-purchase,
+.basket-clear {
+  background-color: rgb(175, 196, 238);
+  border: none;
+  height: 28px;
+  font-weight: normal;
+}
+.continue-shopping:hover,
+.go-to-purchase-list:hover,
+.basket-purchase:hover,
+.basket-clear:hover {
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+.basket-buttons2 {
+  margin: 0 4px;
+  margin-top: 7px;
+  display: flex;
+  justify-content: space-between;
+}
+.basket-table th {
+  border-bottom: 1px solid #a39485;
+}
+
+.basket-table td {
+  border-bottom: 1px solid #e5e5e5;
+}
+.basket-table td,
+th {
+  padding: 1em 0.5em;
+  vertical-align: middle;
+}
+.basket-table .align-center {
+  text-align: center;
+}
