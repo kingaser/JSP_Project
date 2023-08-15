@@ -7,9 +7,9 @@ import entity.Member;
 public interface MemberDao {
 	void insert(Member m);
 
-	Member getbyUsername(String username, String passwd);
+	Member getByUsername(String username, String passwd);
 
-	Member getbyUsername_mem(String username);
+	Member getByUsername_mem(String username);
 
 	void delete(String username);
 

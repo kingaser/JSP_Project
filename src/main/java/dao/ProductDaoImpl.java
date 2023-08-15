@@ -45,7 +45,7 @@ public class ProductDaoImpl implements ProductDao {
 	}
 
 	@Override
-	public Product getbyTitle(String title) {
+	public Product getByTitle(String title) {
 		// TODO Auto-generated method stub
 		Product product = null;
 		String sql = "select * from product where title=?";

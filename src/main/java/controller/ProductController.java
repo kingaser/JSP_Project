@@ -35,7 +35,7 @@ public class ProductController extends HttpServlet {
 		String command = request.getParameter("command");
 		if (command.equals("index")) {
 
-			str = "/WEB-INF/view/product/.jsp";
+			str = "/WEB-INF/view/product/jsp/index.jsp";
 		} else if (command.equals("listProduct")) {
 			List<Product> list = null;
 			list = productService.getProducts();

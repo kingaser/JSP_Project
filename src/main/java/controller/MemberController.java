@@ -35,7 +35,7 @@ public class MemberController extends HttpServlet {
 			str = "/WEB-INF/view/member/.jsp";
 		} else if (command.equals("signup")) {
 
-			str = "/WEB-INF/view/member/.jsp";
+			str = "/WEB-INF/view/member/jsp/signup.jsp";
 		}
 		// forward
 		request.getRequestDispatcher(str).forward(request, response);
@@ -61,7 +61,9 @@ public class MemberController extends HttpServlet {
 			m.setTel(tel);
 			memberService.signup(m);
 
-			str = "/WEB-INF/view/member/.jsp";
+//			str = "/WEB-INF/view/member/login.jsp";
+			request.getRequestDispatcher("/WEB-INF/view/member/jsp/login.jsp")
+					.forward(request, response);
 		} else if (command.equals("login")) {
 			String username = request.getParameter("username");
 			String passwd = request.getParameter("passwd");
@@ -74,7 +76,7 @@ public class MemberController extends HttpServlet {
 				HttpSession session = request.getSession();
 				session.setAttribute("username", username);
 			}
-			str = "/WEB-INF/view/member/.jsp";
+			str = "/WEB-INF/view/member/login.jsp";
 		} else if (command.equals("logout")) {
 			HttpSession session = request.getSession(false);
 			session.removeAttribute("id");

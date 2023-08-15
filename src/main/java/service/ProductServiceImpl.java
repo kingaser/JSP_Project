@@ -35,7 +35,7 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public Product getProductByTitle(String title) {
 		// TODO Auto-generated method stub
-		return productDao.getbyTitle(title);
+		return productDao.getByTitle(title);
 	}
 
 	@Override
