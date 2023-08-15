@@ -24,7 +24,7 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public Member login(String username, String passwd) {
 		// TODO Auto-generated method stub
-		return memberDao.getbyUsername(username, passwd);
+		return memberDao.getByUsername(username, passwd);
 	}
 
 	@Override
@@ -36,7 +36,7 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public Member getMemberByUsername(String username) {
 		// TODO Auto-generated method stub
-		return memberDao.getbyUsername_mem(username);
+		return memberDao.getByUsername_mem(username);
 	}
 
 	@Override

@@ -46,7 +46,7 @@ public class MemberDaoImpl implements MemberDao {
 	}
 
 	@Override
-	public Member getbyUsername(String username, String passwd) {
+	public Member getByUsername(String username, String passwd) {
 		// TODO Auto-generated method stub
 		Member member = null;
 		String sql = "select * from member where username=? and passwd=?";
@@ -71,7 +71,7 @@ public class MemberDaoImpl implements MemberDao {
 	}
 
 	@Override
-	public Member getbyUsername_mem(String username) {
+	public Member getByUsername_mem(String username) {
 		// TODO Auto-generated method stub
 		Member member = null;
 		String sql = "select * from member where username=?";

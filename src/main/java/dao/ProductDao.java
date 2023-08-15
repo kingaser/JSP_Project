@@ -7,7 +7,7 @@ import entity.Product;
 public interface ProductDao {
 	void insert(Product product);
 
-	Product getbyTitle(String title);
+	Product getByTitle(String title);
 
 	void modify(Product product);
 

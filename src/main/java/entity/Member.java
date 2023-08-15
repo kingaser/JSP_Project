@@ -6,20 +6,20 @@ public class Member {
 	private String username;
 	private String passwd;
 	private String address;
-	private String tel;
+	private String phoneNumber;
 	private String role;
 
 	public Member() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Member(int memberId, String username, String passwd, String address, String tel, String role) {
+	public Member(int memberId, String username, String passwd, String address, String phoneNumber, String role) {
 		super();
 		this.memberId = memberId;
 		this.username = username;
 		this.passwd = passwd;
 		this.address = address;
-		this.tel = tel;
+		this.phoneNumber = phoneNumber;
 		this.role = role;
 	}
 
@@ -56,11 +56,11 @@ public class Member {
 	}
 
 	public String getTel() {
-		return tel;
+		return phoneNumber;
 	}
 
-	public void setTel(String tel) {
-		this.tel = tel;
+	public void setTel(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
 	}
 
 	public String getRole() {
