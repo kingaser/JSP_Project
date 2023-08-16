@@ -4,15 +4,33 @@ public class Member {
 
 	private int memberId;
 	private String username;
+<<<<<<< HEAD
 	private String passwd;
 	private String address;
 	private String tel;
 	private String role;
 
+=======
+	private String password;
+	private String address;
+	private String phoneNumber;
+	private String role;
+
+	public Member(String username, String password, String address, String phoneNumber, String role) {
+		// TODO Auto-generated constructor stub
+		this.username = username;
+		this.password = password;
+		this.address = address;
+		this.phoneNumber = phoneNumber;
+		this.role = role;
+	}
+
+>>>>>>> 27274548fbcbcd35f4ec9c1ae6a62d595cc0c362
 	public Member() {
 		// TODO Auto-generated constructor stub
 	}
 
+<<<<<<< HEAD
 	public Member(int memberId, String username, String passwd, String address, String tel, String role) {
 		super();
 		this.memberId = memberId;
@@ -23,6 +41,8 @@ public class Member {
 		this.role = role;
 	}
 
+=======
+>>>>>>> 27274548fbcbcd35f4ec9c1ae6a62d595cc0c362
 	public int getMemberId() {
 		return memberId;
 	}
@@ -39,12 +59,21 @@ public class Member {
 		this.username = username;
 	}
 
+<<<<<<< HEAD
 	public String getPasswd() {
 		return passwd;
 	}
 
 	public void setPasswd(String passwd) {
 		this.passwd = passwd;
+=======
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+>>>>>>> 27274548fbcbcd35f4ec9c1ae6a62d595cc0c362
 	}
 
 	public String getAddress() {
@@ -55,12 +84,21 @@ public class Member {
 		this.address = address;
 	}
 
+<<<<<<< HEAD
 	public String getTel() {
 		return tel;
 	}
 
 	public void setTel(String tel) {
 		this.tel = tel;
+=======
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
+>>>>>>> 27274548fbcbcd35f4ec9c1ae6a62d595cc0c362
 	}
 
 	public String getRole() {

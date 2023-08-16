@@ -1,16 +1,20 @@
 package entity;
 
 public class Purchase {
+<<<<<<< HEAD
 	private int memberId;
 	private String username;
 	private String passwd;
 	private String address;
 	private String tel;
 	private String role;
+=======
+>>>>>>> 27274548fbcbcd35f4ec9c1ae6a62d595cc0c362
 
 	private int purchaseId;
 	private int p_memberId;
 	private String title;
+<<<<<<< HEAD
 	private String price;
 	private String quantity;
 
@@ -28,12 +32,20 @@ public class Purchase {
 		this.tel = tel;
 		this.role = role;
 		this.purchaseId = purchaseId;
+=======
+	private int price;
+	private int quantity;
+
+	public Purchase(int p_memberId, String title, int price, int quantity) {
+		super();
+>>>>>>> 27274548fbcbcd35f4ec9c1ae6a62d595cc0c362
 		this.p_memberId = p_memberId;
 		this.title = title;
 		this.price = price;
 		this.quantity = quantity;
 	}
 
+<<<<<<< HEAD
 	public int getMemberId() {
 		return memberId;
 	}
@@ -80,6 +92,10 @@ public class Purchase {
 
 	public void setRole(String role) {
 		this.role = role;
+=======
+	public Purchase() {
+		// TODO Auto-generated constructor stub
+>>>>>>> 27274548fbcbcd35f4ec9c1ae6a62d595cc0c362
 	}
 
 	public int getPurchaseId() {
@@ -106,6 +122,7 @@ public class Purchase {
 		this.title = title;
 	}
 
+<<<<<<< HEAD
 	public String getPrice() {
 		return price;
 	}
@@ -119,6 +136,21 @@ public class Purchase {
 	}
 
 	public void setQuantity(String quantity) {
+=======
+	public int getPrice() {
+		return price;
+	}
+
+	public void setPrice(int price) {
+		this.price = price;
+	}
+
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+>>>>>>> 27274548fbcbcd35f4ec9c1ae6a62d595cc0c362
 		this.quantity = quantity;
 	}
 

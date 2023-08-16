@@ -2,6 +2,7 @@ package entity;
 
 public class Basket {
 
+<<<<<<< HEAD
 	private int memberId;
 	private String username;
 	private String passwd;
@@ -24,11 +25,30 @@ public class Basket {
 //	private String title;
 //	private int price;
 //	private int quantity;
+=======
+	private int basketId;
+	private int b_productId;
+	private int b_memberId;
+	private String title;
+	private int price;
+	private int quantity;
+
+
+	public Basket(int b_productId, int b_memberId, String title, int price, int quantity) {
+		super();
+		this.b_productId = b_productId;
+		this.b_memberId = b_memberId;
+		this.title = title;
+		this.price = price;
+		this.quantity = quantity;
+	}
+>>>>>>> 27274548fbcbcd35f4ec9c1ae6a62d595cc0c362
 
 	public Basket() {
 		// TODO Auto-generated constructor stub
 	}
 
+<<<<<<< HEAD
 	public Basket(int basketId, int b_memberId, int b_productId) {
 		super();
 		basketId = this.basketId;
@@ -61,6 +81,8 @@ public class Basket {
 		this.image = image;
 	}
 
+=======
+>>>>>>> 27274548fbcbcd35f4ec9c1ae6a62d595cc0c362
 	public int getBasketId() {
 		return basketId;
 	}
@@ -69,6 +91,7 @@ public class Basket {
 		this.basketId = basketId;
 	}
 
+<<<<<<< HEAD
 	public int getB_memberId() {
 		return b_memberId;
 	}
@@ -77,6 +100,8 @@ public class Basket {
 		this.b_memberId = b_memberId;
 	}
 
+=======
+>>>>>>> 27274548fbcbcd35f4ec9c1ae6a62d595cc0c362
 	public int getB_productId() {
 		return b_productId;
 	}
@@ -85,6 +110,7 @@ public class Basket {
 		this.b_productId = b_productId;
 	}
 
+<<<<<<< HEAD
 	public int getMemberId() {
 		return memberId;
 	}
@@ -139,6 +165,14 @@ public class Basket {
 
 	public void setProductId(int productId) {
 		this.productId = productId;
+=======
+	public int getB_memberId() {
+		return b_memberId;
+	}
+
+	public void setB_memberId(int b_memberId) {
+		this.b_memberId = b_memberId;
+>>>>>>> 27274548fbcbcd35f4ec9c1ae6a62d595cc0c362
 	}
 
 	public String getTitle() {
@@ -149,6 +183,7 @@ public class Basket {
 		this.title = title;
 	}
 
+<<<<<<< HEAD
 	public String getAuthor() {
 		return author;
 	}
@@ -213,4 +248,22 @@ public class Basket {
 //		this.quantity = quantity;
 //	}
 
+=======
+	public int getPrice() {
+		return price;
+	}
+
+	public void setPrice(int price) {
+		this.price = price;
+	}
+
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+
+>>>>>>> 27274548fbcbcd35f4ec9c1ae6a62d595cc0c362
 }

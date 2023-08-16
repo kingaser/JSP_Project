@@ -1,6 +1,7 @@
 package entity;
 
 public class Reply {
+<<<<<<< HEAD
 	private int memberId;
 	private String username;
 	private String passwd;
@@ -18,11 +19,26 @@ public class Reply {
 	private String price;
 	private String quantity;
 	private String image;
+=======
+
+	private int replyId;
+	private int r_productId;
+	private int r_memberId;
+	private String content;
+
+	public Reply(int r_productId, int r_memberId, String content) {
+		super();
+		this.r_productId = r_productId;
+		this.r_memberId = r_memberId;
+		this.content = content;
+	}
+>>>>>>> 27274548fbcbcd35f4ec9c1ae6a62d595cc0c362
 
 	public Reply() {
 		// TODO Auto-generated constructor stub
 	}
 
+<<<<<<< HEAD
 	public Reply(int memberId, String username, String passwd, String address, String tel, String role, int replyId,
 			int r_productId, int r_memberId, String replycontent, int productId, String title, String author,
 			String productcontent, String price, String quantity, String image) {
@@ -94,6 +110,8 @@ public class Reply {
 		this.role = role;
 	}
 
+=======
+>>>>>>> 27274548fbcbcd35f4ec9c1ae6a62d595cc0c362
 	public int getReplyId() {
 		return replyId;
 	}
@@ -118,6 +136,7 @@ public class Reply {
 		this.r_memberId = r_memberId;
 	}
 
+<<<<<<< HEAD
 	public String getReplycontent() {
 		return replycontent;
 	}
@@ -180,6 +199,14 @@ public class Reply {
 
 	public void setImage(String image) {
 		this.image = image;
+=======
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
+>>>>>>> 27274548fbcbcd35f4ec9c1ae6a62d595cc0c362
 	}
 
 }
