@@ -13,7 +13,6 @@ import service.BasketServiceImpl;
 import service.ReplyService;
 import service.ReplyServiceImpl;
 
-
 import java.io.IOException;
 import java.util.List;
 
@@ -69,14 +68,14 @@ public class ReplyController extends HttpServlet {
 			Reply reply = new Reply();
 			reply.setR_memberId(r_memberId);
 			reply.setR_productId(r_productId);
-			reply.setReplycontent(replycontent);
+			reply.setReplyContent(replycontent);
 			replyService.addReply(reply);
 
 			str = "/WEB-INF/view/reply/.jsp";
 		} else if (command.equals("delBasket")) {
 			HttpSession session = request.getSession();
-			String username = (String) session.getAttribute("username");
-			replyService.delReply(username);
+			int replyId = Integer.parseInt(request.getParameter("replyId"));
+			replyService.delReply(replyId);
 
 			str = "/WEB-INF/view/reply/.jsp";
 		}

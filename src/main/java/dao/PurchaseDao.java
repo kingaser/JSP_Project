@@ -1,8 +1,8 @@
 package dao;
 
-import java.util.List;
-
 import entity.Purchase;
+
+import java.util.List;
 
 public interface PurchaseDao {
 

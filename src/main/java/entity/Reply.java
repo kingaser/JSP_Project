@@ -1,6 +1,7 @@
 package entity;
 
 public class Reply {
+
 	private int memberId;
 	private String username;
 	private String passwd;
@@ -10,23 +11,29 @@ public class Reply {
 	private int replyId;
 	private int r_productId;
 	private int r_memberId;
-	private String replycontent;
+	private String replyContent;
 	private int productId;
 	private String title;
 	private String author;
-	private String productcontent;
+	private String productContent;
 	private String price;
 	private String quantity;
 	private String image;
+	private String content;
 
 	public Reply() {
 		// TODO Auto-generated constructor stub
 	}
 
+	public Reply(int r_productId, int r_memberId, String content) {
+		this.r_productId = r_productId;
+		this.r_memberId = r_memberId;
+		this.content = content;
+	}
+
 	public Reply(int memberId, String username, String passwd, String address, String tel, String role, int replyId,
-			int r_productId, int r_memberId, String replycontent, int productId, String title, String author,
-			String productcontent, String price, String quantity, String image) {
-		super();
+				 int r_productId, int r_memberId, String replyContent, int productId, String title, String author,
+				 String productContent, String price, String quantity, String image) {
 		this.memberId = memberId;
 		this.username = username;
 		this.passwd = passwd;
@@ -36,11 +43,11 @@ public class Reply {
 		this.replyId = replyId;
 		this.r_productId = r_productId;
 		this.r_memberId = r_memberId;
-		this.replycontent = replycontent;
+		this.replyContent = replyContent;
 		this.productId = productId;
 		this.title = title;
 		this.author = author;
-		this.productcontent = productcontent;
+		this.productContent = productContent;
 		this.price = price;
 		this.quantity = quantity;
 		this.image = image;
@@ -118,12 +125,12 @@ public class Reply {
 		this.r_memberId = r_memberId;
 	}
 
-	public String getReplycontent() {
-		return replycontent;
+	public String getReplyContent() {
+		return replyContent;
 	}
 
-	public void setReplycontent(String replycontent) {
-		this.replycontent = replycontent;
+	public void setReplyContent(String replyContent) {
+		this.replyContent = replyContent;
 	}
 
 	public int getProductId() {
@@ -150,12 +157,12 @@ public class Reply {
 		this.author = author;
 	}
 
-	public String getProductcontent() {
-		return productcontent;
+	public String getProductContent() {
+		return productContent;
 	}
 
-	public void setProductcontent(String productcontent) {
-		this.productcontent = productcontent;
+	public void setProductContent(String productContent) {
+		this.productContent = productContent;
 	}
 
 	public String getPrice() {
@@ -182,4 +189,11 @@ public class Reply {
 		this.image = image;
 	}
 
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
+	}
 }

@@ -1,16 +1,14 @@
 package service;
 
-import java.util.List;
-
 import entity.Basket;
-import entity.Member;
-import entity.Product;
+
+import java.util.List;
 
 public interface BasketService {
 
 	void addBasket(Basket basket);
 
-	void deleteBasket(String username);
+	void deleteBasket(int basketId);
 
 	Basket getByUsername(String username);
 

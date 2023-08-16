@@ -1,8 +1,5 @@
 package controller;
 
-import java.io.IOException;
-import java.util.List;
-
 import entity.Basket;
 import entity.Member;
 import jakarta.servlet.ServletException;
@@ -15,6 +12,9 @@ import service.BasketService;
 import service.BasketServiceImpl;
 import service.MemberService;
 import service.MemberServiceImpl;
+
+import java.io.IOException;
+import java.util.List;
 
 @WebServlet("/basket")
 public class BasketController extends HttpServlet {
@@ -75,9 +75,8 @@ public class BasketController extends HttpServlet {
 
 			str = "/WEB-INF/view/basket/.jsp";
 		} else if (command.equals("delBasket")) {
-			HttpSession session = request.getSession();
-			String username = (String) session.getAttribute("username");
-			basketService.deleteBasket(username);
+			int basketId = Integer.parseInt(request.getParameter("basketId"));
+			basketService.deleteBasket(basketId);
 
 			str = "/WEB-INF/view/basket/.jsp";
 		}

@@ -1,25 +1,14 @@
 package dao;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import entity.Reply;
+
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import entity.Reply;
-import util.dbconn;
-
 public class ReplyDaoImpl implements ReplyDao {
-	dbconn db = null;
-	Connection con = null;
-
-	public ReplyDaoImpl() {
-		// TODO Auto-generated constructor stub
-		db = new dbconn();
-		con = db.getConnection();
-	}
+	private Connection con = null;
+	private PreparedStatement pstmt = null;
 
 	@Override
 	public List<Reply> selectAll() {
@@ -27,7 +16,10 @@ public class ReplyDaoImpl implements ReplyDao {
 		List<Reply> list = new ArrayList<Reply>();
 		String sql = "select * from (select * from member m left join reply r on m.memberId=r.r_memberId order by m.username asc) a left join product p on a.r_productId=p.productId order by a.username asc";
 		try {
-			PreparedStatement pstmt = con.prepareStatement(sql);
+			String url = "jdbc:oracle:thin:@localhost:1521/orcl";
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			con = DriverManager.getConnection(url, "sys as sysdba", "1");
+			pstmt = con.prepareStatement(sql);
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {
 				list.add(new Reply(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
@@ -35,10 +27,10 @@ public class ReplyDaoImpl implements ReplyDao {
 						rs.getString(12), rs.getString(13), rs.getString(14), rs.getString(15), rs.getString(16),
 						rs.getString(17)));
 			}
-			rs.close();
-			pstmt.close();
-			con.close();
 		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -52,34 +44,42 @@ public class ReplyDaoImpl implements ReplyDao {
 		String sql = "insert into reply values(replyId.nextval,?,?,?)";
 
 		try {
-			PreparedStatement pstmt = con.prepareStatement(sql);
+			String url = "jdbc:oracle:thin:@localhost:1521/orcl";
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			con = DriverManager.getConnection(url, "sys as sysdba", "1");
+			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, reply.getR_memberId());
 			pstmt.setInt(2, reply.getR_productId());
-			pstmt.setString(3, reply.getReplycontent());
+			pstmt.setString(3, reply.getReplyContent());
 
 			pstmt.executeUpdate();
-
-			pstmt.close();
 		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 
 	@Override
-	public void delete(String username) {
+	public void delete(int replyId) {
 		// TODO Auto-generated method stub
-		String sql = "delete reply where username=?";
+		String sql = "delete from reply where replyid=?";
 		try {
-			PreparedStatement pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, username);
+			String url = "jdbc:oracle:thin:@localhost:1521/orcl";
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			con = DriverManager.getConnection(url, "sys as sysdba", "1");
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, replyId);
 			pstmt.executeUpdate();
-
-			pstmt.close();
-			con.close();
 		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
+
 }
