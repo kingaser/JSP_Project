@@ -35,7 +35,7 @@ public class ProductController extends HttpServlet {
 		String command = request.getParameter("command");
 		if (command.equals("index")) {
 
-			str = "/WEB-INF/view/product/jsp/index.jsp";
+			str = "/WEB-INF/view/product/.jsp";
 		} else if (command.equals("listProduct")) {
 			List<Product> list = null;
 			list = productService.getProducts();
@@ -65,9 +65,17 @@ public class ProductController extends HttpServlet {
 
 			String title = request.getParameter("title");
 			String author = request.getParameter("author");
-			String productcontent = request.getParameter("productcontent");
-			String price = request.getParameter("price");
-			String quantity = request.getParameter("quantity");
+			String productContent = request.getParameter("productContent");
+			String price_ = request.getParameter("price");
+			String quantity_ = request.getParameter("quantity");
+
+			int price = 0;
+			if (price_ != null && price_.equals(""))
+				price = Integer.parseInt(price_);
+
+			int quantity = 0;
+			if (quantity_ != null && quantity_.equals(""))
+				quantity = Integer.parseInt(quantity_);
 
 			Part filePart = request.getPart("image");
 			String fileName = filePart.getSubmittedFileName();
@@ -78,7 +86,7 @@ public class ProductController extends HttpServlet {
 			Product product = new Product();
 			product.setTitle(title);
 			product.setAuthor(author);
-			product.setProductcontent(productcontent);
+			product.setProductContent(productContent);
 			product.setPrice(price);
 			product.setQuantity(quantity);
 			product.setImage(filePath);
@@ -88,9 +96,18 @@ public class ProductController extends HttpServlet {
 		} else if (command.equals("editProduct")) {
 			String title = request.getParameter("title");
 			String author = request.getParameter("author");
-			String productcontent = request.getParameter("productcontent");
-			String price = request.getParameter("price");
-			String quantity = request.getParameter("quantity");
+			String productContent = request.getParameter("productContent");
+			String price_ = request.getParameter("price");
+			String quantity_ = request.getParameter("quantity");
+
+			int price = 0;
+			if (price_ != null && price_.equals(""))
+				price = Integer.parseInt(price_);
+
+			int quantity = 0;
+			if (quantity_ != null && quantity_.equals(""))
+				quantity = Integer.parseInt(quantity_);
+
 
 			Part filePart = request.getPart("image");
 			String fileName = filePart.getSubmittedFileName();
@@ -98,13 +115,13 @@ public class ProductController extends HttpServlet {
 
 			String filePath = savePath + File.separator + fileName;
 
-			Product product = new Product(title, author, productcontent, price, quantity, filePath);
+			Product product = new Product(title, author, productContent, price, quantity, filePath);
 			productService.editProduct(product);
 
 			str = "/WEB-INF/view/product/.jsp";
 		} else if (command.equals("delProduct")) {
-			String title = request.getParameter("title");
-			productService.deleteProduct(title);
+			int productId = Integer.parseInt(request.getParameter("productId"));
+			productService.deleteProduct(productId);
 
 			str = "/WEB-INF/view/product/.jsp";
 		}

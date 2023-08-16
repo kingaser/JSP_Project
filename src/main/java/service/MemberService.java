@@ -1,8 +1,8 @@
 package service;
 
-import java.util.List;
-
 import entity.Member;
+
+import java.util.List;
 
 public interface MemberService {
 	void signup(Member m);

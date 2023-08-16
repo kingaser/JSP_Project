@@ -10,7 +10,7 @@ public interface ProductService {
 
 	void editProduct(Product product);
 
-	void deleteProduct(String title);
+	void deleteProduct(int productId);
 
 	Product getProductByTitle(String title);
 

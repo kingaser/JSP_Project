@@ -13,21 +13,19 @@
     <link rel="icon" href="http://localhost:8888/images/favicon.jpg">
 </head>
 <body>
-<form action="/member?command=login" method="post">
-    <input type="hidden" name="command" value="signup"/>
-    <img src="/images/logo.jpg" alt="">
+<img src="/images/logo.jpg" alt="">
+<form action="member?command=signup" method="post">
     <div class="container" id="container">
         <div class="form-container sign-in-container">
             <form action="#">
                 <h1>Information</h1>
-                <input type="text" placeholder="Id"/>
-                <input type="password" placeholder="Password"/>
-                <input type="number" placeholder="Phone Number"/>
-                <input type="text" placeholder="Address"/>
-                <button>Sign up</button>
+                <input type="text" name="username"/>
+                <input type="password" name="passwd"/>
+                <input type="text" name="tel"/>
+                <input type="text" name="address"/>
+                <button type="submit">Sign up</button>
             </form>
         </div>
-
         <div class="overlay-container">
             <div class="overlay">
                 <div class="overlay-panel overlay-left">

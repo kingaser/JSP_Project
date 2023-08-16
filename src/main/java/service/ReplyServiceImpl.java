@@ -21,9 +21,9 @@ public class ReplyServiceImpl implements ReplyService {
 	}
 
 	@Override
-	public void delReply(String username) {
+	public void delReply(int replyId) {
 		// TODO Auto-generated method stub
-		replyDao.delete(username);
+		replyDao.delete(replyId);
 	}
 
 	@Override

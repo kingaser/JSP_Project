@@ -1,38 +1,43 @@
 package entity;
 
-import java.io.File;
-
 public class Product {
 
 	private int productId;
 	private String title;
 	private String author;
-	private String productcontent;
-	private String price;
-	private String quantity;
+	private String productContent;
+	private int price;
+	private int quantity;
 	private String image;
 
-	public Product() {
-		// TODO Auto-generated constructor stub
-	}
-
-	public Product(String title, String author, String productcontent, String price, String quantity, String image) {
-		super();
+	public Product(String title, String author, int price, int quantity, String image) {
 		this.title = title;
 		this.author = author;
-		this.productcontent = productcontent;
 		this.price = price;
 		this.quantity = quantity;
 		this.image = image;
 	}
 
-	public Product(int productId, String title, String author, String productcontent, String price, String quantity,
-			String image) {
+	public Product() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public Product(String title, String author, String productContent, int price, int quantity, String image) {
+		this.title = title;
+		this.author = author;
+		this.productContent = productContent;
+		this.price = price;
+		this.quantity = quantity;
+		this.image = image;
+	}
+
+	public Product(int productId, String title, String author, String productContent, int price, int quantity,
+				   String image) {
 		super();
 		this.productId = productId;
 		this.title = title;
 		this.author = author;
-		this.productcontent = productcontent;
+		this.productContent = productContent;
 		this.price = price;
 		this.quantity = quantity;
 		this.image = image;
@@ -62,27 +67,27 @@ public class Product {
 		this.author = author;
 	}
 
-	public String getProductcontent() {
-		return productcontent;
+	public String getProductContent() {
+		return productContent;
 	}
 
-	public void setProductcontent(String productcontent) {
-		this.productcontent = productcontent;
+	public void setProductContent(String productContent) {
+		this.productContent = productContent;
 	}
 
-	public String getPrice() {
+	public int getPrice() {
 		return price;
 	}
 
-	public void setPrice(String price) {
+	public void setPrice(int price) {
 		this.price = price;
 	}
 
-	public String getQuantity() {
+	public int getQuantity() {
 		return quantity;
 	}
 
-	public void setQuantity(String quantity) {
+	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
 
@@ -93,5 +98,4 @@ public class Product {
 	public void setImage(String image) {
 		this.image = image;
 	}
-
 }

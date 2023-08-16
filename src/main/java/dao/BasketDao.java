@@ -9,7 +9,7 @@ public interface BasketDao {
 
 	Basket getByUsername(String username);
 
-	void delete(String username);
+	void delete(int basketId);
 
 	List<Basket> selectAll();
 }

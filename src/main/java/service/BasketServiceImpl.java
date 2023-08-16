@@ -1,12 +1,10 @@
 package service;
 
-import java.util.List;
-
 import dao.BasketDao;
 import dao.BasketDaoImpl;
 import entity.Basket;
-import entity.Member;
-import entity.Product;
+
+import java.util.List;
 
 public class BasketServiceImpl implements BasketService {
 	BasketDao basketDao = null;
@@ -23,9 +21,9 @@ public class BasketServiceImpl implements BasketService {
 	}
 
 	@Override
-	public void deleteBasket(String username) {
+	public void deleteBasket(int basketId) {
 		// TODO Auto-generated method stub
-		basketDao.delete(username);
+		basketDao.delete(basketId);
 	}
 
 	@Override

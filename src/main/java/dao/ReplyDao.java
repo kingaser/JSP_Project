@@ -7,7 +7,7 @@ import entity.Reply;
 public interface ReplyDao {
 	void register(Reply reply);
 
-	void delete(String username);
+	void delete(int replyId);
 
 	List<Reply> selectAll();
 }
