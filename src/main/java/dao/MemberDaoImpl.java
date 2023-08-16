@@ -119,7 +119,7 @@ public class MemberDaoImpl implements MemberDao {
 	@Override
 	public void delete(String username) {
 		// TODO Auto-generated method stub
-		String sql = "delete member where username=?";
+		String sql = "delete from member where username=?";
 		try {
 			String url = "jdbc:oracle:thin:@localhost:1521/orcl";
 			Class.forName("oracle.jdbc.driver.OracleDriver");
