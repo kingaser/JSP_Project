@@ -10,4 +10,6 @@ public interface ReplyDao {
 	void delete(int replyId);
 
 	List<Reply> selectAll();
+
+	Reply selectByUsername(String username);
 }

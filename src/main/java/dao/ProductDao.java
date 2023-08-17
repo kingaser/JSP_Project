@@ -7,11 +7,11 @@ import entity.Product;
 public interface ProductDao {
 	void insert(Product product);
 
-	Product getbyTitle(String title);
-
 	void modify(Product product);
 
-	void delete(int productId);
+	void delete(String title);
+
+	Product selectByTitle(String title);
 
 	List<Product> selectAll();
 }

@@ -11,9 +11,9 @@ public class MemberServiceImpl implements MemberService {
 		List<Member> list = null;
 		String sql = "select * from member order by username desc";
 		try {
-			String url = "jdbc:oracle:thin:@localhost:1521/orcl";
+			String url = "jdbc:oracle:thin:@localhost:1521/xepdb1";
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			Connection con = DriverManager.getConnection(url, "sys", "1");
+			Connection con = DriverManager.getConnection(url, "JSP", "123123");
 			PreparedStatement pstmt = con.prepareStatement(sql);
 			ResultSet rs = pstmt.executeQuery();
 
@@ -41,11 +41,11 @@ public class MemberServiceImpl implements MemberService {
 	// 회원 등록
 	public int register(Member m) {
 		int result = 0;
-		String sql = "insert into member(memberId, username, password, address, phoneNumber, role) values(memberId.nextval,?,?,?,?,'USER')";
+		String sql = "insert into member(memberId, username, password, address, tel, role) values(memberId.nextval,?,?,?,?,'USER')";
 		try {
-			String url = "jdbc:oracle:thin:@localhost:1521/orcl";
+			String url = "jdbc:oracle:thin:@localhost:1521/xepdb1";
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			Connection con = DriverManager.getConnection(url, "sys", "1");
+			Connection con = DriverManager.getConnection(url, "JSP", "123123");
 			PreparedStatement pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, m.getUsername());
 			pstmt.setString(2, m.getPassword());
@@ -71,9 +71,9 @@ public class MemberServiceImpl implements MemberService {
 		int result = 0;
 		String sql = "update member set password=? where username=?";
 		try {
-			String url = "jdbc:oracle:thin:@localhost:1521/orcl";
+			String url = "jdbc:oracle:thin:@localhost:1521/xepdb1";
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			Connection con = DriverManager.getConnection(url, "sys", "1");
+			Connection con = DriverManager.getConnection(url, "JSP", "123123");
 			PreparedStatement pstmt = con.prepareStatement(sql);
 			result = pstmt.executeUpdate();
 
@@ -97,9 +97,9 @@ public class MemberServiceImpl implements MemberService {
 		int result = 0;
 		String sql = "delete member where id=? and password=?";
 		try {
-			String url = "jdbc:oracle:thin:@localhost:1521/orcl";
+			String url = "jdbc:oracle:thin:@localhost:1521/xepdb1";
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			Connection con = DriverManager.getConnection(url, "sys", "1");
+			Connection con = DriverManager.getConnection(url, "JSP", "123123");
 			PreparedStatement pstmt = con.prepareStatement(sql);
 			result = pstmt.executeUpdate();
 
@@ -124,21 +124,30 @@ public class MemberServiceImpl implements MemberService {
 		Member login = null;
 		String sql = "select * from member where username=? and password=?";
 		try {
-			String url = "jdbc:oracle:thin:@localhost:1521/orcl";
+			String url = "jdbc:oracle:thin:@localhost:1521/xepdb1";
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			Connection con = DriverManager.getConnection(url, "sys", "1");
+			Connection con = DriverManager.getConnection(url, "JSP", "123123");
 			PreparedStatement pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, m.getUsername());
 			pstmt.setString(2, m.getPassword());
 			ResultSet rs = pstmt.executeQuery();
 
 			if (rs.next()) {
-				login.setUsername(rs.getString("username"));
-				login.setPassword(rs.getString("password"));
-				login.setAddress(rs.getString("address"));
-				login.setPhoneNumber(rs.getString("phoneNumber"));
-				login.setRole(rs.getString("role"));
-				login.setMemberId(rs.getInt("memberId"));
+				String username = rs.getString("username");
+				String password = rs.getString("password");
+				String address = rs.getString("address");
+				String tel = rs.getString("tel");
+				String role = rs.getString("role");
+				int memberId = Integer.parseInt(rs.getString("memberId"));
+				login = new Member(memberId, username, password, address,
+						tel, role);
+
+//				login.setUsername(rs.getString("username"));
+//				login.setPassword(rs.getString("password"));
+//				login.setAddress(rs.getString("address"));
+//				login.setPhoneNumber(rs.getString("tel"));
+//				login.setRole(rs.getString("role"));
+//				login.setMemberId(rs.getInt("memberId"));
 			}
 			rs.close();
 			pstmt.close();

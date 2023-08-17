@@ -29,14 +29,19 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public void deleteProduct(int productId) {
 		// TODO Auto-generated method stub
-		productDao.delete(productId);
+		productDao.delete(String.valueOf(productId));
 	}
 
 	@Override
 	public Product getProductByTitle(String title) {
-		// TODO Auto-generated method stub
-		return productDao.getbyTitle(title);
+		return null;
 	}
+
+	//	@Override
+//	public Product getProductByTitle(String title) {
+//		// TODO Auto-generated method stub
+//		return productDao.getByTitle(title);
+//	}
 
 	@Override
 	public List<Product> getProducts() {
