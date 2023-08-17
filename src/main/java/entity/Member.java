@@ -13,9 +13,14 @@ public class Member {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Member(int memberId, String username, String password, String address, String phoneNumber, String role) {
-		super();
-		this.memberId = memberId;
+	public Member(String username, String password, String address, String phoneNumber) {
+		this.username = username;
+		this.password = password;
+		this.address = address;
+		this.phoneNumber = phoneNumber;
+	}
+
+	public Member(String username, String password, String address, String phoneNumber, String role) {
 		this.username = username;
 		this.password = password;
 		this.address = address;
@@ -23,7 +28,8 @@ public class Member {
 		this.role = role;
 	}
 
-	public Member(String username, String password, String address, String phoneNumber, String role) {
+	public Member(int memberId, String username, String password, String address, String phoneNumber, String role) {
+		this.memberId = memberId;
 		this.username = username;
 		this.password = password;
 		this.address = address;

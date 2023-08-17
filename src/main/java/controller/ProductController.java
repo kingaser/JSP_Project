@@ -16,7 +16,7 @@ import java.io.IOException;
 import java.util.List;
 
 @MultipartConfig(fileSizeThreshold = 1024 * 1024, maxFileSize = 1024 * 1024 * 50, maxRequestSize = 1024 * 1024 * 50 * 5)
-@WebServlet("/product")
+@WebServlet("/")
 public class ProductController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	ProductService productService = null;
@@ -33,9 +33,8 @@ public class ProductController extends HttpServlet {
 
 		String str = "";
 		String command = request.getParameter("command");
-		if (command.equals("index")) {
-
-			str = "/WEB-INF/view/product/.jsp";
+		if (command == null) {
+			str = "/WEB-INF/view/product/jsp/index.jsp";
 		} else if (command.equals("listProduct")) {
 			List<Product> list = null;
 			list = productService.getProducts();

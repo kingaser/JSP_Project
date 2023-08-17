@@ -40,7 +40,7 @@ public class BasketController extends HttpServlet {
 			list = basketService.getBaskets();
 			request.setAttribute("list", list);
 
-			str = "/WEB-INF/view/basket/.jsp";
+			str = "/WEB-INF/view/basket/jsp/basket-list.jsp";
 		} else if (command.equals("detailBasket")) {
 			Basket basket = null;
 			HttpSession session = request.getSession();

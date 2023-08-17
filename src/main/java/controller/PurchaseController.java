@@ -40,7 +40,7 @@ public class PurchaseController extends HttpServlet {
 			list = purchaseService.getPurchases();
 			request.setAttribute("list", list);
 
-			str = "/WEB-INF/view/purchase/.jsp";
+			str = "/WEB-INF/view/purchase/jsp/purchase-list.jsp";
 		}
 		// forward
 		request.getRequestDispatcher(str).forward(request, response);

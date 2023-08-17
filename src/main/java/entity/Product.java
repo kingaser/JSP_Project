@@ -10,16 +10,16 @@ public class Product {
 	private int quantity;
 	private String image;
 
+	public Product() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public Product(String title, String author, int price, int quantity, String image) {
 		this.title = title;
 		this.author = author;
 		this.price = price;
 		this.quantity = quantity;
 		this.image = image;
-	}
-
-	public Product() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public Product(String title, String author, String productContent, int price, int quantity, String image) {

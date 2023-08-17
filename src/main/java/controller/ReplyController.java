@@ -56,28 +56,29 @@ public class ReplyController extends HttpServlet {
 
 			str = "/WEB-INF/view/reply/.jsp";
 		} else if (command.equals("register")) {
-			String replycontent = request.getParameter("replycontent");
 
 			HttpSession session = request.getSession();
 			String username = (String) session.getAttribute("username");
+			String replyContent = request.getParameter("replyContent");
+
+			Reply reply = new Reply();
 			Basket basket = basketService.getByUsername(username);
 
 			int r_memberId = basket.getMemberId();
 			int r_productId = basket.getProductId();
 
-			Reply reply = new Reply();
 			reply.setR_memberId(r_memberId);
 			reply.setR_productId(r_productId);
-			reply.setReplyContent(replycontent);
+			reply.setReplyContent(replyContent);
 			replyService.addReply(reply);
 
-			str = "/WEB-INF/view/reply/.jsp";
+			str = "/WEB-INF/view/reply/list.jsp";
 		} else if (command.equals("delBasket")) {
 			HttpSession session = request.getSession();
 			int replyId = Integer.parseInt(request.getParameter("replyId"));
 			replyService.delReply(replyId);
 
-			str = "/WEB-INF/view/reply/.jsp";
+			str = "/WEB-INF/view/reply/list.jsp";
 		}
 		request.getRequestDispatcher(str).forward(request, response);
 	}
