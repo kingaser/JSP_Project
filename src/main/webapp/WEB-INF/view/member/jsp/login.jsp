@@ -20,8 +20,8 @@
         <form action="login" method="post">
             <h1>Log in</h1>
             <input type="hidden" name="command" value="login">
-            <input type="text" name="username"/>
-            <input type="password" name="password"/>
+            <input type="text" placeholder="username"/>
+            <input type="password" placeholder="password"/>
             <button type="submit">Log in</button>
         </form>
     </div>
