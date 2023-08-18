@@ -6,6 +6,6 @@
   <nav class="header-menu">
     <a href="login">로그인</a>
     <a href="signup">회원가입</a>
-    <a href="purchase?command=listPurchase">마이페이지</a>
+    <a href="purchase">마이페이지</a>
   </nav>
 </div>

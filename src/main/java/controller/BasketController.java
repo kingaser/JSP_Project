@@ -36,18 +36,17 @@ public class BasketController extends HttpServlet {
 		String str = "";
 		String command = request.getParameter("command");
 		if (command.equals("listBasket")) {
-			List<Basket> list = null;
-			list = basketService.getBaskets();
+			List<Basket> list = basketService.getBaskets();
 			request.setAttribute("list", list);
 
-			str = "/WEB-INF/view/basket/jsp/basket-list.jsp";
+			str = "/view/basket/jsp/basket-list.jsp";
 		} else if (command.equals("detailBasket")) {
 			Basket basket = null;
 			HttpSession session = request.getSession();
 			String username = (String) session.getAttribute("username");
 			basket = basketService.getByUsername(username);
 			request.setAttribute("basket", basket);
-			str = "/WEB-INF/view/basket/.jsp";
+			str = "/view/basket/.jsp";
 		}
 		// forward
 		request.getRequestDispatcher(str).forward(request, response);
@@ -73,12 +72,12 @@ public class BasketController extends HttpServlet {
 			basket.setB_productId(b_productId);
 			basketService.addBasket(basket);
 
-			str = "/WEB-INF/view/basket/.jsp";
+			str = "/view/basket/.jsp";
 		} else if (command.equals("delBasket")) {
 			int basketId = Integer.parseInt(request.getParameter("basketId"));
 			basketService.deleteBasket(basketId);
 
-			str = "/WEB-INF/view/basket/.jsp";
+			str = "/view/basket/.jsp";
 		}
 		request.getRequestDispatcher(str).forward(request, response);
 	}
