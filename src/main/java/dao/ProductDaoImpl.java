@@ -22,7 +22,7 @@ public class ProductDaoImpl implements ProductDao {
         try {
             String url = "jdbc:oracle:thin:@localhost:1521/orcl";
             Class.forName("oracle.jdbc.driver.OracleDriver");
-            con = DriverManager.getConnection(url, "sys as sysdba", "1");
+            con = DriverManager.getConnection(url, "JSP", "123123");
             pstmt = con.prepareStatement(sql);
             ResultSet rs = pstmt.executeQuery();
             while (rs.next()) {
@@ -104,7 +104,7 @@ public class ProductDaoImpl implements ProductDao {
         try {
             String url = "jdbc:oracle:thin:@localhost:1521/orcl";
             Class.forName("oracle.jdbc.driver.OracleDriver");
-            con = DriverManager.getConnection(url, "sys as sysdba", "1");
+            con = DriverManager.getConnection(url, "JSP", "123123");
             pstmt = con.prepareStatement(sql);
             pstmt.setString(1, product.getTitle());
             pstmt.setString(2, product.getAuthor());
@@ -130,7 +130,7 @@ public class ProductDaoImpl implements ProductDao {
         try {
             String url = "jdbc:oracle:thin:@localhost:1521/orcl";
             Class.forName("oracle.jdbc.driver.OracleDriver");
-            con = DriverManager.getConnection(url, "sys as sysdba", "1");
+            con = DriverManager.getConnection(url, "JSP", "123123");
             pstmt = con.prepareStatement(sql);
             pstmt.setString(1, product.getAuthor());
             pstmt.setInt(2, product.getPrice());
@@ -154,7 +154,7 @@ public class ProductDaoImpl implements ProductDao {
         try {
             String url = "jdbc:oracle:thin:@localhost:1521/orcl";
             Class.forName("oracle.jdbc.driver.OracleDriver");
-            con = DriverManager.getConnection(url, "sys as sysdba", "1");
+            con = DriverManager.getConnection(url, "JSP", "123123");
             pstmt = con.prepareStatement(sql);
             pstmt.setString(1, title);
             pstmt.executeUpdate();

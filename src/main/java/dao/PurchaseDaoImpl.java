@@ -19,7 +19,7 @@ public class PurchaseDaoImpl implements PurchaseDao {
 		try {
 			String url = "jdbc:oracle:thin:@localhost:1521/orcl";
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			con = DriverManager.getConnection(url, "sys as sysdba", "1");
+			con = DriverManager.getConnection(url, "JSP", "123123");
 			pstmt = con.prepareStatement(sql);
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {
@@ -44,7 +44,7 @@ public class PurchaseDaoImpl implements PurchaseDao {
 		try {
 			String url = "jdbc:oracle:thin:@localhost:1521/orcl";
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			con = DriverManager.getConnection(url, "sys as sysdba", "1");
+			con = DriverManager.getConnection(url, "JSP", "123123");
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, purchase.getP_memberId());
 			pstmt.setString(2, purchase.getTitle());

@@ -23,7 +23,7 @@ public class ReplyDaoImpl implements ReplyDao {
 		try {
 			String url = "jdbc:oracle:thin:@localhost:1521/orcl";
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			con = DriverManager.getConnection(url, "sys as sysdba", "1");
+			con = DriverManager.getConnection(url, "JSP", "123123");
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, reply.getR_memberId());
 			pstmt.setInt(2, reply.getR_productId());
@@ -46,7 +46,7 @@ public class ReplyDaoImpl implements ReplyDao {
 		try {
 			String url = "jdbc:oracle:thin:@localhost:1521/orcl";
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			con = DriverManager.getConnection(url, "sys as sysdba", "1");
+			con = DriverManager.getConnection(url, "JSP", "123123");
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, replyId);
 			pstmt.executeUpdate();
@@ -67,7 +67,7 @@ public class ReplyDaoImpl implements ReplyDao {
 		try {
 			String url = "jdbc:oracle:thin:@localhost:1521/orcl";
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			con = DriverManager.getConnection(url, "sys as sysdba", "1");
+			con = DriverManager.getConnection(url, "JSP", "123123");
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, username);
 			ResultSet rs = pstmt.executeQuery();
@@ -95,7 +95,7 @@ public class ReplyDaoImpl implements ReplyDao {
 		try {
 			String url = "jdbc:oracle:thin:@localhost:1521/orcl";
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			con = DriverManager.getConnection(url, "sys as sysdba", "1");
+			con = DriverManager.getConnection(url, "JSP", "123123");
 			pstmt = con.prepareStatement(sql);
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {

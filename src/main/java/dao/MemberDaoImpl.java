@@ -18,7 +18,7 @@ public class MemberDaoImpl implements MemberDao {
 		try {
 			String url = "jdbc:oracle:thin:@localhost:1521/orcl";
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			con = DriverManager.getConnection(url, "sys as sysdba", "1");
+			con = DriverManager.getConnection(url, "JSP", "123123");
 			pstmt = con.prepareStatement(sql);
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {
@@ -43,7 +43,7 @@ public class MemberDaoImpl implements MemberDao {
 		try {
 			String url = "jdbc:oracle:thin:@localhost:1521/orcl";
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			con = DriverManager.getConnection(url, "sys as sysdba", "1");
+			con = DriverManager.getConnection(url, "JSP", "123123");
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, username);
 			pstmt.setString(2, passwd);
@@ -70,7 +70,7 @@ public class MemberDaoImpl implements MemberDao {
 		try {
 			String url = "jdbc:oracle:thin:@localhost:1521/orcl";
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			con = DriverManager.getConnection(url, "sys as sysdba", "1");
+			con = DriverManager.getConnection(url, "JSP", "123123");
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, username);
 			ResultSet rs = pstmt.executeQuery();
@@ -95,7 +95,7 @@ public class MemberDaoImpl implements MemberDao {
 		try {
 			String url = "jdbc:oracle:thin:@localhost:1521/orcl";
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			con = DriverManager.getConnection(url, "sys as sysdba", "1");
+			con = DriverManager.getConnection(url, "JSP", "123123");
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, m.getUsername());
 			pstmt.setString(2, m.getPassword());
@@ -119,7 +119,7 @@ public class MemberDaoImpl implements MemberDao {
 		try {
 			String url = "jdbc:oracle:thin:@localhost:1521/orcl";
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			con = DriverManager.getConnection(url, "sys as sysdba", "1");
+			con = DriverManager.getConnection(url, "JSP", "123123");
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, username);
 			pstmt.executeUpdate();

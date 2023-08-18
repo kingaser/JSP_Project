@@ -19,7 +19,7 @@ public class BasketDaoImpl implements BasketDao {
 		try {
 			String url = "jdbc:oracle:thin:@localhost:1521/orcl";
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			con = DriverManager.getConnection(url, "sys as sysdba", "1");
+			con = DriverManager.getConnection(url, "JSP", "123123");
 			pstmt = con.prepareStatement(sql);
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {
@@ -45,7 +45,7 @@ public class BasketDaoImpl implements BasketDao {
 		try {
 			String url = "jdbc:oracle:thin:@localhost:1521/orcl";
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			con = DriverManager.getConnection(url, "sys as sysdba", "1");
+			con = DriverManager.getConnection(url, "JSP", "123123");
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, username);
 			ResultSet rs = pstmt.executeQuery();
@@ -73,7 +73,7 @@ public class BasketDaoImpl implements BasketDao {
 		try {
 			String url = "jdbc:oracle:thin:@localhost:1521/orcl";
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			con = DriverManager.getConnection(url, "sys as sysdba", "1");
+			con = DriverManager.getConnection(url, "JSP", "123123");
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, basket.getB_memberId());
 			pstmt.setInt(2, basket.getB_productId());
@@ -101,7 +101,7 @@ public class BasketDaoImpl implements BasketDao {
 		try {
 			String url = "jdbc:oracle:thin:@localhost:1521/orcl";
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			con = DriverManager.getConnection(url, "sys as sysdba", "1");
+			con = DriverManager.getConnection(url, "JSP", "123123");
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, basketId);
 			pstmt.executeUpdate();

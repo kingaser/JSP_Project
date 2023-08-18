@@ -11,7 +11,7 @@ public class MemberServiceImpl implements MemberService {
 		List<Member> list = null;
 		String sql = "select * from member order by username desc";
 		try {
-			String url = "jdbc:oracle:thin:@localhost:1521/xepdb1";
+			String url = "jdbc:oracle:thin:@localhost:1521/orcl";
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			Connection con = DriverManager.getConnection(url, "JSP", "123123");
 			PreparedStatement pstmt = con.prepareStatement(sql);
@@ -43,7 +43,7 @@ public class MemberServiceImpl implements MemberService {
 		int result = 0;
 		String sql = "insert into member(memberId, username, password, address, tel, role) values(memberId.nextval,?,?,?,?,'USER')";
 		try {
-			String url = "jdbc:oracle:thin:@localhost:1521/xepdb1";
+			String url = "jdbc:oracle:thin:@localhost:1521/orcl";
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			Connection con = DriverManager.getConnection(url, "JSP", "123123");
 			PreparedStatement pstmt = con.prepareStatement(sql);
@@ -71,7 +71,7 @@ public class MemberServiceImpl implements MemberService {
 		int result = 0;
 		String sql = "update member set password=? where username=?";
 		try {
-			String url = "jdbc:oracle:thin:@localhost:1521/xepdb1";
+			String url = "jdbc:oracle:thin:@localhost:1521/orcl";
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			Connection con = DriverManager.getConnection(url, "JSP", "123123");
 			PreparedStatement pstmt = con.prepareStatement(sql);
@@ -97,7 +97,7 @@ public class MemberServiceImpl implements MemberService {
 		int result = 0;
 		String sql = "delete member where id=? and password=?";
 		try {
-			String url = "jdbc:oracle:thin:@localhost:1521/xepdb1";
+			String url = "jdbc:oracle:thin:@localhost:1521/orcl";
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			Connection con = DriverManager.getConnection(url, "JSP", "123123");
 			PreparedStatement pstmt = con.prepareStatement(sql);
@@ -124,7 +124,7 @@ public class MemberServiceImpl implements MemberService {
 		Member login = null;
 		String sql = "select * from member where username=? and password=?";
 		try {
-			String url = "jdbc:oracle:thin:@localhost:1521/xepdb1";
+			String url = "jdbc:oracle:thin:@localhost:1521/orcl";
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			Connection con = DriverManager.getConnection(url, "JSP", "123123");
 			PreparedStatement pstmt = con.prepareStatement(sql);
