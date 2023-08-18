@@ -39,7 +39,7 @@ public class ReplyController extends HttpServlet {
 			List<Reply> list = null;
 			list = replyService.getReplies();
 			request.setAttribute("list", list);
-			str = "/WEB-INF/view/reply/.jsp";
+			str = "/view/reply/.jsp";
 		}
 		request.getRequestDispatcher(str).forward(request, response);
 
@@ -54,7 +54,7 @@ public class ReplyController extends HttpServlet {
 		String command = request.getParameter("command");
 		if (command.equals("registerForm")) {
 
-			str = "/WEB-INF/view/reply/.jsp";
+			str = "/view/reply/.jsp";
 		} else if (command.equals("register")) {
 
 			HttpSession session = request.getSession();
@@ -72,13 +72,13 @@ public class ReplyController extends HttpServlet {
 			reply.setReplyContent(replyContent);
 			replyService.addReply(reply);
 
-			str = "/WEB-INF/view/reply/list.jsp";
+			str = "/view/reply/list.jsp";
 		} else if (command.equals("delBasket")) {
 			HttpSession session = request.getSession();
 			int replyId = Integer.parseInt(request.getParameter("replyId"));
 			replyService.delReply(replyId);
 
-			str = "/WEB-INF/view/reply/list.jsp";
+			str = "/view/reply/list.jsp";
 		}
 		request.getRequestDispatcher(str).forward(request, response);
 	}

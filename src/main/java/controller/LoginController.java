@@ -41,6 +41,7 @@ public class LoginController extends HttpServlet {
         m.setPassword(password);
 
         Member login = new MemberServiceImpl().login(m);
+
         if (login != null) {
             HttpSession session = request.getSession();
             session.setAttribute("login", login);
@@ -53,6 +54,7 @@ public class LoginController extends HttpServlet {
             System.out.println("로그인 실패");
             response.sendRedirect("/login?loginFailed=true");
         }
+        // forward
 
 
     }

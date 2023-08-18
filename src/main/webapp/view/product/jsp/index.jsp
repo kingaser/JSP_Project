@@ -2,7 +2,7 @@
 
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -13,7 +13,7 @@
     <link rel="icon" href="images/favicon.jpg">
 </head>
 <body>
-<jsp:include page="/WEB-INF/view/header/jsp/header.jsp"></jsp:include>
+<jsp:include page="/view/header/jsp/header.jsp" />
 <main class="main">
     <div class="logo-search-wrapper">
         <div class="index-logo">
@@ -54,8 +54,12 @@
                 <td>120000원</td>
                 <td>3개</td>
                 <td>
-                    <button class="to-add">즉시구매</button>
-                    <button class="to-basket">장바구니</button>
+                    <form action="purchase/detail" method="get">
+                        <button class="to-add">즉시구매</button>
+                    </form>
+                    <form action="basket" method="get">
+                        <button class="to-basket" name="command" value="listBasket">장바구니</button>
+                    </form>
                 </td>
             </tr>
             <tr>
