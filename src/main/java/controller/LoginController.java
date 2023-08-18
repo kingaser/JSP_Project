@@ -13,7 +13,7 @@ public class LoginController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String str = "/WEB-INF/view/member/jsp/login.jsp";
+        String str = "/view/member/jsp/login.jsp";
         request.getRequestDispatcher(str)
                 .forward(request, response);
     }

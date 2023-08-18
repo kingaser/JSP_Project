@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -12,7 +12,7 @@
     <link rel="icon" href="images/favicon.jpg">
 </head>
 <body>
-<jsp:include page="/WEB-INF/view/header/jsp/header.jsp"></jsp:include>
+<jsp:include page="/view/header/jsp/header.jsp"></jsp:include>
 <main class="main">
     <div class="purchase-list-wrapper">
         <div class="purchase-list-title">

@@ -25,7 +25,6 @@ public class ProductController extends HttpServlet {
 		// TODO Auto-generated constructor stub
 		productService = new ProductServiceImpl();
 	}
-
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		response.setCharacterEncoding("UTF-8");
@@ -34,20 +33,18 @@ public class ProductController extends HttpServlet {
 		String str = "";
 		String command = request.getParameter("command");
 		if (command == null) {
-			str = "/WEB-INF/view/product/jsp/index.jsp";
-		} else if (command.equals("listProduct")) {
-			List<Product> list = null;
-			list = productService.getProducts();
+			str = "/view/product/jsp/index.jsp";
+	    } else if (command.equals("listProduct")) {
+			List<Product> list = productService.getProducts();
 			request.setAttribute("list", list);
 
-			str = "/WEB-INF/view/product/.jsp";
+			str = "/view/product/.jsp";
 		} else if (command.equals("detailProduct")) {
-			Product product = null;
 			String title = request.getParameter("title");
-			product = productService.getProductByTitle(title);
+			Product product = productService.getProductByTitle(title);
 			request.setAttribute("product", product);
 
-			str = "/WEB-INF/view/product/.jsp";
+			str = "/view/product/.jsp";
 		}
 		// forward
 		request.getRequestDispatcher(str).forward(request, response);
@@ -91,7 +88,7 @@ public class ProductController extends HttpServlet {
 			product.setImage(filePath);
 			productService.register(product);
 
-			str = "/WEB-INF/view/product/.jsp";
+			str = "/view/product/.jsp";
 		} else if (command.equals("editProduct")) {
 			String title = request.getParameter("title");
 			String author = request.getParameter("author");
@@ -117,12 +114,12 @@ public class ProductController extends HttpServlet {
 			Product product = new Product(title, author, productContent, price, quantity, filePath);
 			productService.editProduct(product);
 
-			str = "/WEB-INF/view/product/.jsp";
+			str = "/view/product/.jsp";
 		} else if (command.equals("delProduct")) {
 			int productId = Integer.parseInt(request.getParameter("productId"));
 			productService.deleteProduct(productId);
 
-			str = "/WEB-INF/view/product/.jsp";
+			str = "/view/product/.jsp";
 		}
 		request.getRequestDispatcher(str).forward(request, response);
 	}
