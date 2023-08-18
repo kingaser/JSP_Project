@@ -1,17 +1,17 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>basket-list</title>
-    <script src="includeHTML.js"></script>
+    <script src="js/includeHTML.js"></script>
     <link rel="stylesheet" type="text/css" href="css/basket-list.css" />
     <link rel="stylesheet" type="text/css" href="css/Style.css" />
+    <link rel="icon" href="images/favicon.jpg">
   </head>
   <body>
-    <header class="header" include-html="project-header.html"></header>
+    <jsp:include page="/view/header/jsp/header.jsp" />
     <main class="main">
       <div class="basket-wrapper">
         <div class="basket-title">
@@ -69,6 +69,3 @@
     <footer class="footer" include-html="project-footer.html"></footer>
   </body>
 </html>
-<script>
-  includeHTML();
-</script>
