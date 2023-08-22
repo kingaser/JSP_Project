@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>product-regist</title>
     <script src="js/includeHTML.js"></script>
-    <link rel="stylesheet" type="text/css" href="../../../../css/product-regist.css"/>
-    <link rel="stylesheet" type="text/css" href="../../../../css/Style.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/regist.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/Style.css"/>
     <link rel="icon" href="images/favicon.jpg">
 </head>
 
@@ -16,28 +16,26 @@
 <jsp:include page="/view/header/jsp/header.jsp"/>
 <main class="main">
     <div class="regist-body">
-        <img src="/images/logo.jpg" alt=""/>
-        <div class="container" id="container">
-            <div class="form-container regist-product-container">
-                <form action="/product/add" method="post">
+        <form action="/product/add" method="post" enctype="multipart/form-data">
+            <img src="/images/logo.jpg" alt=""/>
+            <div class="container" id="container">
+                <div class="form-container regist-product-container">
                     <h1>상품 등록</h1>
-                    <input type="text" name="제목"/>
-                    <input type="text" name="저자"/>
-                    <input type="number" name="가격"/>
-                    <input type="number" name="수량"/>
-                    <input type="file" id="file"/>
+                    <input type="text" placeholder="제목" name="title"/>
+                    <input type="text" placeholder="저자" name="author"/>
+                    <input type="number" placeholder="가격" name="price"/>
+                    <input type="number" placeholder="수량" name="quantity"/>
+                    <input type="file" name="image"/>
                     <button type="submit">regist</button>
-                </form>
-            </div>
-            <div class="overlay-container">
-                <div class="overlay">
-                    <div class="overlay-panel overlay-left">
-                        <h1>관리자님!</h1>
-                        <p>상품을<br/><br/>등록하세요 !</p>
+                </div>
+                <div class="overlay-container">
+                    <div class="content-box">
+                        <h2 class="book-info">책 소개</h2>
+                        <textarea class="custom-textarea" datatype="text" name="content"></textarea>
                     </div>
                 </div>
             </div>
-        </div>
+        </form>
     </div>
 </main>
 <footer class="footer" include-html="project-footer.html"></footer>

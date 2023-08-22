@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- 상세페이지 -->
 
 <html lang="en">
@@ -30,16 +31,19 @@
                 </thead>
                 <tbody>
                 <tr>
-                    <td><img src="/images/book1.png" alt="bookimg"/></td>
-                    <td>토비의스프zzzzzzzzzzzzzzzzzzzzz링</td>
-                    <td>토비</td>
-                    <td>120000원</td>
+                    <td><img src="${p.image}"></td>
+                    <td class="title indent text-align-left">${p.title}</td>
+                    <td>${p.author}</td>
+                    <td>${p.price}</td>
+                    <td>${p.quantity}</td>
                     <td>
-                        책소개책소개책소개책소개책소개책소개책소개책소개책소개책소개책소개책소개책소개책소개책소개책소개책소개책소개책소개책소개책소개책소개책소개책소개책소개책소개책소개책소개책소개책소개
-                    </td>
-                    <td>
+<%--                        <form action="purchase/detail?id=${pid}" method="get">--%>
                         <button class="to-add">즉시구매</button>
                         <button class="to-basket">장바구니</button>
+<%--                        </form>--%>
+                        <%--                        <form action="basket" method="get">--%>
+                        <%--                            <button class="to-basket" name="command" value="listBasket">장바구니</button>--%>
+                        <%--                        </form>--%>
                     </td>
                 </tr>
                 </tbody>

@@ -33,11 +33,10 @@ public class PurchaseController extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
         response.setContentType("text/html; charset=UTF-8");
 
-        String str = "";
         List<Purchase> list = purchaseService.getPurchases();
         request.setAttribute("list", list);
 
-        str = "/view/purchase/jsp/purchase-list.jsp";
+        String str = "/view/purchase/jsp/purchase-list.jsp";
         // forward
         request.getRequestDispatcher(str).forward(request, response);
     }
