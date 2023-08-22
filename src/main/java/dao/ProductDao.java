@@ -14,4 +14,6 @@ public interface ProductDao {
 	Product selectByTitle(String title);
 
 	List<Product> selectAll();
+
+	Product selectById(int id);
 }

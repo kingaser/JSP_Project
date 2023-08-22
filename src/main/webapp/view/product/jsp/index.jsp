@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 
 <!DOCTYPE html>
@@ -8,12 +9,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>index</title>
     <script src="js/includeHTML.js"></script>
-    <link rel="stylesheet" type="text/css" href="css/index.css" />
-    <link rel="stylesheet" type="text/css" href="css/Style.css" />
+    <link rel="stylesheet" type="text/css" href="css/index.css"/>
+    <link rel="stylesheet" type="text/css" href="css/Style.css"/>
     <link rel="icon" href="images/favicon.jpg">
 </head>
 <body>
-<jsp:include page="/view/header/jsp/header.jsp" />
+<jsp:include page="/view/header/jsp/header.jsp"/>
 <main class="main">
     <div class="logo-search-wrapper">
         <div class="index-logo">
@@ -47,32 +48,24 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <td><img src="images/book1.png" alt="bookimg"/></td>
-                <td>토비의스프zzzzzzzzzzzzzzzzzzzzz링</td>
-                <td>토비</td>
-                <td>120000원</td>
-                <td>3개</td>
-                <td>
-                    <form action="purchase/detail" method="get">
-                        <button class="to-add">즉시구매</button>
-                    </form>
-                    <form action="basket" method="get">
-                        <button class="to-basket" name="command" value="listBasket">장바구니</button>
-                    </form>
-                </td>
-            </tr>
-            <tr>
-                <td><img src="images/book1.png" alt="bookimg"/></td>
-                <td>토비의스프zzzzzzzzzzzzzzzzzzzzz링</td>
-                <td>토비</td>
-                <td>120000원</td>
-                <td>3개</td>
-                <td>
-                    <button class="to-add">즉시구매</button>
-                    <button class="to-basket">장바구니</button>
-                </td>
-            </tr>
+            <c:forEach var="p" items="${list}">
+                <tr>
+                    <td><img src="${p.image}"></td>
+                    <td class="title indent text-align-left">${p.title}</td>
+                    <td>${p.author}</td>
+                    <td>${p.price}</td>
+                    <td>${p.quantity}</td>
+                    <td>
+                        <form action="purchase/detail?id=" method="get">
+                            <button class="to-add" name="id" value="${p.productId}">구매 페이지</button>
+                        </form>
+<%--                        <form action="basket" method="get">--%>
+<%--                            <button class="to-basket" name="command" value="listBasket">장바구니</button>--%>
+<%--                        </form>--%>
+                    </td>
+                </tr>
+            </c:forEach>
+
             </tbody>
             <tfoot>
             <td colspan="6" class="tablefoot"></td>

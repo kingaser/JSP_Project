@@ -21,9 +21,9 @@ public class ReplyDaoImpl implements ReplyDao {
 		String sql = "insert into reply values(replyId.nextval,?,?,?)";
 
 		try {
-			String url = "jdbc:oracle:thin:@localhost:1521/orcl";
+			String url = "jdbc:oracle:thin:@localhost:1521/xepdb1";
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			con = DriverManager.getConnection(url, "sys as sysdba", "1");
+			con = DriverManager.getConnection(url, "JSP", "123123");
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, reply.getR_memberId());
 			pstmt.setInt(2, reply.getR_productId());
@@ -44,9 +44,9 @@ public class ReplyDaoImpl implements ReplyDao {
 		// TODO Auto-generated method stub
 		String sql = "delete from reply where replyId=?";
 		try {
-			String url = "jdbc:oracle:thin:@localhost:1521/orcl";
+			String url = "jdbc:oracle:thin:@localhost:1521/xepdb1";
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			con = DriverManager.getConnection(url, "sys as sysdba", "1");
+			con = DriverManager.getConnection(url, "JSP", "123123");
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, replyId);
 			pstmt.executeUpdate();
@@ -65,9 +65,9 @@ public class ReplyDaoImpl implements ReplyDao {
 		Reply reply = null;
 		String sql = "select * from (select * from member m left join reply r on m.memberId=r.r_memberId order by m.username asc) a left join product p on a.r_productId=p.productId where a.username=? order by a.username asc";
 		try {
-			String url = "jdbc:oracle:thin:@localhost:1521/orcl";
+			String url = "jdbc:oracle:thin:@localhost:1521/xepdb1";
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			con = DriverManager.getConnection(url, "sys as sysdba", "1");
+			con = DriverManager.getConnection(url, "JSP", "123123");
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, username);
 			ResultSet rs = pstmt.executeQuery();
@@ -93,9 +93,9 @@ public class ReplyDaoImpl implements ReplyDao {
 		List<Reply> list = new ArrayList<Reply>();
 		String sql = "select * from (select * from member m left join reply r on m.memberId=r.r_memberId order by m.username asc) a left join product p on a.r_productId=p.productId order by a.username asc";
 		try {
-			String url = "jdbc:oracle:thin:@localhost:1521/orcl";
+			String url = "jdbc:oracle:thin:@localhost:1521/xepdb1";
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			con = DriverManager.getConnection(url, "sys as sysdba", "1");
+			con = DriverManager.getConnection(url, "JSP", "123123");
 			pstmt = con.prepareStatement(sql);
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {

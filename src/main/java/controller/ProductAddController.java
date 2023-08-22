@@ -2,6 +2,7 @@ package controller;
 
 import entity.Product;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -13,6 +14,11 @@ import service.ProductServiceImpl;
 import java.io.File;
 import java.io.IOException;
 
+@MultipartConfig(
+        fileSizeThreshold = 1024 * 1024,
+        maxFileSize = 1024 * 1024 * 50,
+        maxRequestSize = 1024 * 1024 * 50 * 5
+)
 @WebServlet("/product/add")
 public class ProductAddController extends HttpServlet {
 
@@ -31,27 +37,21 @@ public class ProductAddController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        response.setCharacterEncoding("UTF-8");
+        response.setContentType("multipart/form-data; charset=UTF-8");
+
         String title = request.getParameter("title");
         String author = request.getParameter("author");
-        String productContent = request.getParameter("productContent");
-        String price_ = request.getParameter("price");
-        String quantity_ = request.getParameter("quantity");
-
-        int price = 0;
-        if (price_ != null && price_.equals(""))
-            price = Integer.parseInt(price_);
-
-        int quantity = 0;
-        if (quantity_ != null && quantity_.equals(""))
-            quantity = Integer.parseInt(quantity_);
+        String price = request.getParameter("price");
+        String quantity = request.getParameter("quantity");
 
         Part filePart = request.getPart("image");
         String fileName = filePart.getSubmittedFileName();
-        String savePath = request.getServletContext().getRealPath("/upload");
 
-        String filePath = savePath + File.separator + fileName;
+        String filePath = "\\view\\product\\images\\" + fileName;
 
-        Product product = new Product(title, author, productContent, price, quantity, filePath);
+        Product product = new Product(title, author, price, quantity, filePath);
         productService.register(product);
 
         response.sendRedirect("/");

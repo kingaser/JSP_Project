@@ -17,12 +17,12 @@ public class Basket {
     private String title;
     private String author;
     private String content;
-    private int price;
-    private int quantity;
+    private String price;
+    private String quantity;
     private String image;
 
 
-    public Basket(int b_productId, int b_memberId, String title, int price, int quantity) {
+    public Basket(int b_productId, int b_memberId, String title, String price, String quantity) {
         super();
         this.b_productId = b_productId;
         this.b_memberId = b_memberId;
@@ -42,8 +42,8 @@ public class Basket {
     }
 
     public Basket(int memberId, String username, String passwd, String address, String tel, String role, int basketId,
-                  int b_memberId, int b_productId, int productId, String title, String author, String content, int price,
-                  int quantity, String image) {
+                  int b_memberId, int b_productId, int productId, String title, String author, String content, String price,
+                  String quantity, String image) {
         super();
         this.memberId = memberId;
         this.username = username;
@@ -167,19 +167,19 @@ public class Basket {
         this.content = content;
     }
 
-    public int getPrice() {
+    public String getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(String price) {
         this.price = price;
     }
 
-    public int getQuantity() {
+    public String getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(int quantity) {
+    public void setQuantity(String quantity) {
         this.quantity = quantity;
     }
 

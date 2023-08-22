@@ -33,10 +33,13 @@ public class ProductController extends HttpServlet {
 		String str = "";
 		String command = request.getParameter("command");
 		if (command == null) {
+			List<Product> list = productService.getProducts();
+			request.setAttribute("list", list);
 			str = "/view/product/jsp/index.jsp";
 	    } else if (command.equals("listProduct")) {
 			List<Product> list = productService.getProducts();
 			request.setAttribute("list", list);
+
 
 			str = "/view/product/.jsp";
 		} else if (command.equals("detailProduct")) {
@@ -61,17 +64,8 @@ public class ProductController extends HttpServlet {
 
 			String title = request.getParameter("title");
 			String author = request.getParameter("author");
-			String productContent = request.getParameter("productContent");
-			String price_ = request.getParameter("price");
-			String quantity_ = request.getParameter("quantity");
-
-			int price = 0;
-			if (price_ != null && price_.equals(""))
-				price = Integer.parseInt(price_);
-
-			int quantity = 0;
-			if (quantity_ != null && quantity_.equals(""))
-				quantity = Integer.parseInt(quantity_);
+			String price = request.getParameter("price");
+			String quantity = request.getParameter("quantity");
 
 			Part filePart = request.getPart("image");
 			String fileName = filePart.getSubmittedFileName();
@@ -79,31 +73,20 @@ public class ProductController extends HttpServlet {
 
 			String filePath = savePath + File.separator + fileName;
 
-			Product product = new Product();
-			product.setTitle(title);
-			product.setAuthor(author);
-			product.setProductContent(productContent);
-			product.setPrice(price);
-			product.setQuantity(quantity);
-			product.setImage(filePath);
+			Product product = new Product(0, title, author, price, quantity, filePath);
+//			product.setTitle(title);
+//			product.setAuthor(author);
+//			product.setPrice(price);
+//			product.setQuantity(quantity);
+//			product.setImage(filePath);
 			productService.register(product);
 
 			str = "/view/product/.jsp";
 		} else if (command.equals("editProduct")) {
 			String title = request.getParameter("title");
 			String author = request.getParameter("author");
-			String productContent = request.getParameter("productContent");
-			String price_ = request.getParameter("price");
-			String quantity_ = request.getParameter("quantity");
-
-			int price = 0;
-			if (price_ != null && price_.equals(""))
-				price = Integer.parseInt(price_);
-
-			int quantity = 0;
-			if (quantity_ != null && quantity_.equals(""))
-				quantity = Integer.parseInt(quantity_);
-
+			String price = request.getParameter("price");
+			String quantity = request.getParameter("quantity");
 
 			Part filePart = request.getPart("image");
 			String fileName = filePart.getSubmittedFileName();
@@ -111,7 +94,7 @@ public class ProductController extends HttpServlet {
 
 			String filePath = savePath + File.separator + fileName;
 
-			Product product = new Product(title, author, productContent, price, quantity, filePath);
+			Product product = new Product(title, author, price, quantity, filePath);
 			productService.editProduct(product);
 
 			str = "/view/product/.jsp";

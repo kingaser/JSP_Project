@@ -21,10 +21,10 @@
         <div class="form-container sign-in-container">
             <form action="#">
                 <h1>Information</h1>
-                <input type="text" placeholder="username"/>
-                <input type="password" placeholder="password"/>
-                <input type="text" placeholder="tel"/>
-                <input type="text" placeholder="address"/>
+                <input type="text" name="username"/>
+                <input type="password" name="password"/>
+                <input type="text" name="tel"/>
+                <input type="text" name="address"/>
                 <button type="submit">Sign up</button>
             </form>
         </div>

@@ -5,16 +5,12 @@ public class Product {
 	private int productId;
 	private String title;
 	private String author;
-	private String productContent;
-	private int price;
-	private int quantity;
+	private String price;
+	private String quantity;
 	private String image;
+	private String content;
 
-	public Product() {
-		// TODO Auto-generated constructor stub
-	}
-
-	public Product(String title, String author, int price, int quantity, String image) {
+	public Product(String title, String author, String price, String quantity, String image) {
 		this.title = title;
 		this.author = author;
 		this.price = price;
@@ -22,22 +18,20 @@ public class Product {
 		this.image = image;
 	}
 
-	public Product(String title, String author, String productContent, int price, int quantity, String image) {
+	public Product(String title, String author, String price, String quantity, String image, String content) {
 		this.title = title;
 		this.author = author;
-		this.productContent = productContent;
 		this.price = price;
 		this.quantity = quantity;
 		this.image = image;
+		this.content = content;
 	}
 
-	public Product(int productId, String title, String author, String productContent, int price, int quantity,
+	public Product(int productId, String title, String author, String price, String quantity,
 				   String image) {
-		super();
 		this.productId = productId;
 		this.title = title;
 		this.author = author;
-		this.productContent = productContent;
 		this.price = price;
 		this.quantity = quantity;
 		this.image = image;
@@ -67,27 +61,19 @@ public class Product {
 		this.author = author;
 	}
 
-	public String getProductContent() {
-		return productContent;
-	}
-
-	public void setProductContent(String productContent) {
-		this.productContent = productContent;
-	}
-
-	public int getPrice() {
+	public String getPrice() {
 		return price;
 	}
 
-	public void setPrice(int price) {
+	public void setPrice(String price) {
 		this.price = price;
 	}
 
-	public int getQuantity() {
+	public String getQuantity() {
 		return quantity;
 	}
 
-	public void setQuantity(int quantity) {
+	public void setQuantity(String quantity) {
 		this.quantity = quantity;
 	}
 
@@ -97,5 +83,13 @@ public class Product {
 
 	public void setImage(String image) {
 		this.image = image;
+	}
+
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
 	}
 }
