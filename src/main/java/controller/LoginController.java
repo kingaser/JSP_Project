@@ -44,8 +44,6 @@ public class LoginController extends HttpServlet {
         if (login != null) {
             HttpSession session = request.getSession();
             session.setAttribute("login", login);
-
-
 //          15분 세션유지
             session.setMaxInactiveInterval(15 * 60);
             System.out.println("로그인 성공");
