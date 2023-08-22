@@ -37,11 +37,10 @@ public class ProductServiceImpl implements ProductService {
 		return null;
 	}
 
-	//	@Override
-//	public Product getProductByTitle(String title) {
-//		// TODO Auto-generated method stub
-//		return productDao.getByTitle(title);
-//	}
+	@Override
+	public Product getProduct(int id) {
+		return productDao.selectById(id);
+	}
 
 	@Override
 	public List<Product> getProducts() {

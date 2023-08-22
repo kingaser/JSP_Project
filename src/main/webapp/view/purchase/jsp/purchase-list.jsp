@@ -12,7 +12,7 @@
     <link rel="icon" href="images/favicon.jpg">
 </head>
 <body>
-<jsp:include page="/view/header/jsp/header.jsp"></jsp:include>
+<jsp:include page="/view/header/jsp/header.jsp" />
 <main class="main">
     <div class="purchase-list-wrapper">
         <div class="purchase-list-title">
