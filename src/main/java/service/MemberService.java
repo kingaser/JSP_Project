@@ -11,8 +11,9 @@ public interface MemberService {
 
 	void deleteMember(String username);
 
-	Member getMemberByUsername(String username);
+	Member getMemberById(int id);
 
 	List<Member> getMembers();
 
+	Member getMemberByUsername(String sessionUsername);
 }

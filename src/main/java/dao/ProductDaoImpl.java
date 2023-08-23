@@ -54,7 +54,7 @@ public class ProductDaoImpl implements ProductDao {
             ResultSet rs = pstmt.executeQuery();
 
             if (rs.next()) {
-                product = new Product(rs.getString("TITLE"),
+                product = new Product(rs.getInt("PRODUCTID"), rs.getString("TITLE"),
                         rs.getString("AUTHOR"), rs.getString("PRICE"),
                         rs.getString("QUANTITY"), rs.getString("IMAGE"),
                         rs.getString("CONTENT"));

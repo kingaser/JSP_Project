@@ -32,6 +32,7 @@ public class PurchaseDetailController extends HttpServlet {
         int id = Integer.parseInt(request.getParameter("id"));
 
         Product product = productService.getProduct(id);
+        int pid = product.getProductId();
         request.setAttribute("p", product);
 
         String url = "/view/detail/jsp/details.jsp";
@@ -46,8 +47,8 @@ public class PurchaseDetailController extends HttpServlet {
 
         String str = "";
         HttpSession session = request.getSession();
-        String username = (String) session.getAttribute("username");
-        Member member = memberService.getMemberByUsername(username);
+        int memberId = (int) session.getAttribute("memberId");
+        Member member = memberService.getMemberById(memberId);
 
         Product product = productService.getProductByTitle("title");
 

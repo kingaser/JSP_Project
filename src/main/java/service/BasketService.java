@@ -12,5 +12,5 @@ public interface BasketService {
 
 	Basket getByUsername(String username);
 
-	List<Basket> getBaskets();
+	List<Basket> getBaskets(int id);
 }
