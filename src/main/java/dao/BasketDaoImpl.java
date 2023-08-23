@@ -11,21 +11,35 @@ public class BasketDaoImpl implements BasketDao {
 	private PreparedStatement pstmt = null;
 
 	@Override
-	public List<Basket> selectAll() {
+	public List<Basket> selectAll(int id) {
 		// TODO Auto-generated method stub
-		List<Basket> list = new ArrayList<Basket>();
-		String sql = "select * from (select * from member m left join basket b on m.memberId=b.b_memberId order by m.username asc) a left join product p on a.b_productId=p.productId order by a.username asc";
+		List<Basket> list = new ArrayList<>();
+		String sql = "select * from (" +
+				"select * from member m " +
+				"left join basket b " +
+				"on m.memberId=b.b_memberId) a " +
+				"left join product p " +
+				"on a.b_productId=p.productId " +
+				"where a.memberId=? " +
+				"order by a.username asc";
 
 		try {
-			String url = "jdbc:oracle:thin:@localhost:1521/orcl";
+			String url = "jdbc:oracle:thin:@localhost:1521/xepdb1";
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			con = DriverManager.getConnection(url, "JSP", "123123");
 			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, id);
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {
-				list.add(new Basket(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
-						rs.getString(6), rs.getInt(7), rs.getInt(8), rs.getInt(9), rs.getInt(10), rs.getString(11),
-						rs.getString(12), rs.getString(13), rs.getString(14), rs.getString(15), rs.getString(16)));
+				list.add(new Basket(rs.getInt("MEMBERID"),
+						rs.getString("USERNAME"), rs.getString("PASSWORD"),
+						rs.getString("ADDRESS"), rs.getString("TEL"),
+						rs.getString("ROLE"), rs.getInt("BASKETID"),
+						rs.getInt("B_MEMBERID"), rs.getInt("B_PRODUCTID"),
+						rs.getInt("PRODUCTID"), rs.getString("TITLE"),
+						rs.getString("AUTHOR"), rs.getString("CONTENT"),
+						rs.getString("PRICE"), rs.getString("QUANTITY"),
+						rs.getString("IMAGE")));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

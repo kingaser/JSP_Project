@@ -22,11 +22,11 @@
                 <thead>
                 <tr>
                     <th width="15%">책 이미지</th>
-                    <th width="20%">제목</th>
-                    <th width="15%">저자</th>
-                    <th width="15%">가격</th>
-                    <th width="25%">책소개</th>
-                    <th width="10%">비고</th>
+                    <th width="30%">제목</th>
+                    <th width="5%">저자</th>
+                    <th width="10%">가격</th>
+                    <th width="10%">구매</th>
+                    <th width="10%">장바구니</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -35,12 +35,15 @@
                     <td class="title indent text-align-left">${p.title}</td>
                     <td>${p.author}</td>
                     <td>${p.price}</td>
-                    <td>${p.quantity}</td>
                     <td>
-<%--                        <form action="purchase/detail?id=${pid}" method="get">--%>
-                        <button class="to-add">즉시구매</button>
-                        <button class="to-basket">장바구니</button>
-<%--                        </form>--%>
+                        <form action="purchase/detail?id=${p.productId}" method="get">
+                            <button class="to-add">즉시 구매</button>
+                        </form>
+                    </td>
+                    <td>
+                        <form action="/basket/register" method="post">
+                            <button class="to-basket" name="productId" value="${p.productId}">추가</button>
+                        </form>
                         <%--                        <form action="basket" method="get">--%>
                         <%--                            <button class="to-basket" name="command" value="listBasket">장바구니</button>--%>
                         <%--                        </form>--%>

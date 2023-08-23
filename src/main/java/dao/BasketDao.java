@@ -11,5 +11,5 @@ public interface BasketDao {
 
 	void delete(int basketId);
 
-	List<Basket> selectAll();
+	List<Basket> selectAll(int id);
 }
