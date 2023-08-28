@@ -11,6 +11,8 @@ import java.io.IOException;
 @WebServlet("/login")
 public class LoginController extends HttpServlet {
 
+    private HttpSession session;
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -27,15 +29,7 @@ public class LoginController extends HttpServlet {
 
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-//        if (username != null && !username.equals("")) {
-//            Cookie c = new Cookie("username", username);
-//            c.setMaxAge(1 * 1 * 60 * 60); // 만료 기간 1시간(초단위 작성)\
-//            response.addCookie(c);
-//        } else {
-//            Cookie c = new Cookie("username", username);
-//            c.setMaxAge(0); // 0초
-//            response.addCookie(c);
-//        }
+
         Member m = new Member();
         m.setUsername(username);
         m.setPassword(password);
@@ -43,7 +37,7 @@ public class LoginController extends HttpServlet {
         Member login = new MemberServiceImpl().login(m);
 
         if (login != null) {
-            HttpSession session = request.getSession();
+            session = request.getSession();
             session.setAttribute("login", login);
 //          15분 세션유지
             session.setMaxInactiveInterval(15 * 60);
@@ -55,7 +49,6 @@ public class LoginController extends HttpServlet {
             response.sendRedirect("/login?loginFailed=true");
         }
         // forward
-
-
     }
+
 }

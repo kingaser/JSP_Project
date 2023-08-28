@@ -88,21 +88,24 @@ public class ReplyDaoImpl implements ReplyDao {
 	}
 
 	@Override
-	public List<Reply> selectAll() {
+	public List<Reply> selectAll(int productId) {
 		// TODO Auto-generated method stub
-		List<Reply> list = new ArrayList<Reply>();
-		String sql = "select * from (select * from member m left join reply r on m.memberId=r.r_memberId order by m.username asc) a left join product p on a.r_productId=p.productId order by a.username asc";
+		List<Reply> list = new ArrayList<>();
+		String sql = "select replyId, r_productid, r_memberid, username, replycontent " +
+				"from (select * from member m right join reply r on m.memberId=r.r_memberId order by m.username asc) a " +
+				"left join product p on a.r_productId=p.productId " +
+				"where r_productId = ? " +
+				"order by replyId desc";
 		try {
 			String url = "jdbc:oracle:thin:@localhost:1521/xepdb1";
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			con = DriverManager.getConnection(url, "JSP", "123123");
 			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, productId);
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {
-				list.add(new Reply(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
-						rs.getString(6), rs.getInt(7), rs.getInt(8), rs.getInt(9), rs.getString(10), rs.getInt(11),
-						rs.getString(12), rs.getString(13), rs.getString(14), rs.getString(15), rs.getString(16),
-						rs.getString(17)));
+				list.add(new Reply(rs.getInt("r_productId"), rs.getInt("r_memberId"),
+						rs.getString("replyContent"), rs.getString("username")));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

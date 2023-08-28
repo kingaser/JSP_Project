@@ -10,20 +10,14 @@ import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 
 @WebServlet("/logout")
-public class LogoutController extends HttpServlet  {
+public class LogoutController extends HttpServlet {
+
+    private HttpSession session;
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-
-        HttpSession session = request.getSession();
-
-        if (session != null) {
-            session.invalidate(); // 세션 무효화
-        }
-
-
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        session = request.getSession();
+        session.invalidate();
         response.sendRedirect("/");
-
     }
 }

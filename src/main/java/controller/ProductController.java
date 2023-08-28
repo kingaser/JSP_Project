@@ -74,11 +74,7 @@ public class ProductController extends HttpServlet {
 			String filePath = savePath + File.separator + fileName;
 
 			Product product = new Product(0, title, author, price, quantity, filePath);
-//			product.setTitle(title);
-//			product.setAuthor(author);
-//			product.setPrice(price);
-//			product.setQuantity(quantity);
-//			product.setImage(filePath);
+
 			productService.register(product);
 
 			str = "/view/product/.jsp";
