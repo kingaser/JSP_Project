@@ -36,7 +36,6 @@ public class BasketController extends HttpServlet {
 		if (command.equals("listBasket")) {
 			HttpSession session = request.getSession();
 			Member member = (Member) session.getAttribute("login");
-//			request.setAttribute("session", session.getAttribute("login"));
 			List<Basket> list = basketService.getBaskets(member.getMemberId());
 			request.setAttribute("list", list);
 
@@ -63,7 +62,6 @@ public class BasketController extends HttpServlet {
 		if (command.equals("register")) {
 			HttpSession session = request.getSession();
 
-//			int b_memberId = member.getMemberId();
 			String sessionUsername = String.valueOf(session.getAttribute("username"));
 			Member member = (Member) session.getAttribute("login");
 			int b_memberId = member.getMemberId();

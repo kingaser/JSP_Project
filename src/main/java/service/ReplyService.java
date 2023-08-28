@@ -9,5 +9,5 @@ public interface ReplyService {
 
 	void delReply(int replyId);
 
-	List<Reply> getReplies();
+	List<Reply> getReplies(int productId);
 }

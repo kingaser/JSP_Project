@@ -27,9 +27,9 @@ public class ReplyServiceImpl implements ReplyService {
 	}
 
 	@Override
-	public List<Reply> getReplies() {
+	public List<Reply> getReplies(int productId) {
 		// TODO Auto-generated method stub
-		return replyDao.selectAll();
+		return replyDao.selectAll(productId);
 	}
 
 }

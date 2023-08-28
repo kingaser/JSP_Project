@@ -3,28 +3,31 @@ package service;
 import entity.Member;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class MemberServiceImpl implements MemberService {
     // 회원 목록
     public List<Member> selectAll() {
-        List<Member> list = null;
-        String sql = "select * from member order by username desc";
+        List<Member> list = new ArrayList<>();
+        String sql = "select * from member where role = ? order by memberId desc";
         try {
             String url = "jdbc:oracle:thin:@localhost:1521/xepdb1";
             Class.forName("oracle.jdbc.driver.OracleDriver");
             Connection con = DriverManager.getConnection(url, "JSP", "123123");
             PreparedStatement pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, "USER");
             ResultSet rs = pstmt.executeQuery();
 
             while (rs.next()) {
+                int memberId = rs.getInt("memberId");
                 String username = rs.getString("username");
                 String password = rs.getString("password");
                 String address = rs.getString("address");
-                String phoneNumber = rs.getString("phoneNumber");
+                String phoneNumber = rs.getString("tel");
                 String role = rs.getString("role");
 
-                Member m = new Member(username, password, address, phoneNumber, role);
+                Member m = new Member(memberId, username, password, address, phoneNumber, role);
                 list.add(m);
             }
             rs.close();
@@ -142,12 +145,6 @@ public class MemberServiceImpl implements MemberService {
                 login = new Member(memberId, username, password, address,
                         tel, role);
 
-//				login.setUsername(rs.getString("username"));
-//				login.setPassword(rs.getString("password"));
-//				login.setAddress(rs.getString("address"));
-//				login.setPhoneNumber(rs.getString("tel"));
-//				login.setRole(rs.getString("role"));
-//				login.setMemberId(rs.getInt("memberId"));
             }
             rs.close();
             pstmt.close();
@@ -174,8 +171,26 @@ public class MemberServiceImpl implements MemberService {
     }
 
     @Override
-    public void deleteMember(String username) {
+    public void deleteMember(String memberId) {
+        String sql = "delete from member where memberId = ?";
+        try {
+            String url = "jdbc:oracle:thin:@localhost:1521/xepdb1";
+            Class.forName("oracle.jdbc.driver.OracleDriver");
+            Connection con = DriverManager.getConnection(url, "JSP", "123123");
+            PreparedStatement pstmt = con.prepareStatement(sql);
 
+            pstmt.setString(1, memberId);
+            pstmt.executeQuery();
+
+            pstmt.close();
+            con.close();
+        } catch (ClassNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -242,10 +257,5 @@ public class MemberServiceImpl implements MemberService {
             e.printStackTrace();
         }
         return member;
-    }
-
-    @Override
-    public List<Member> getMembers() {
-        return null;
     }
 }

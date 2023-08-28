@@ -1,6 +1,7 @@
 package controller;
 
 import entity.Basket;
+import entity.Member;
 import entity.Purchase;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -21,6 +22,7 @@ public class PurchaseController extends HttpServlet {
     private static final long serialVersionUID = 1L;
     PurchaseService purchaseService = null;
     BasketService basketService = null;
+    HttpSession session;
 
     public PurchaseController() {
         // TODO Auto-generated constructor stub
@@ -34,6 +36,9 @@ public class PurchaseController extends HttpServlet {
         response.setContentType("text/html; charset=UTF-8");
 
         List<Purchase> list = purchaseService.getPurchases();
+        session = request.getSession();
+        session.setAttribute("login", session.getAttribute("login"));
+
         request.setAttribute("list", list);
 
         String str = "/view/purchase/jsp/purchase-list.jsp";

@@ -51,16 +51,16 @@
 <a href="/">
     <img class="logo" src="images/2nd_project_logo.jpg" alt="logo"/>
 </a>
-<form action="signup" method="post">
+<form name="signupForm" action="signup" method="post">
     <div class="container" id="container">
         <div class="form-container sign-in-container">
             <form action="#">
                 <h1>Information</h1>
-                <input type="text" name="username"/>
-                <input type="password" name="password"/>
-                <input type="text" name="tel"/>
-                <input type="text" name="address"/>
-                <button type="submit">Sign up</button>
+                <input type="text" name="userId" placeholder="아이디를 입력하세요"/>
+                <input type="password" name="password" placeholder="비밀번호를 입력하세요"/>
+                <input type="text" name="tel" placeholder="전화번호를 입력하세요"/>
+                <input type="text" name="address" placeholder="주소를 입력하세요"/>
+                <button type="submit" onclick="return checkFun()">Sign up</button>
             </form>
         </div>
         <form action="login" method="get">
@@ -69,33 +69,12 @@
                 <div class="overlay-panel overlay-left">
                     <h1>Welcome!</h1>
                     <p>7DAYS에서<br/><br/>공부를 시작해요!</p>
-                    <button type="submit">Log in</button>
+                    <button onclick="location.href='login' ">Log in</button>
                 </div>
             </div>
         </div>
         </form>
     </div>
 </form>
-<div class="container" id="container">
-    <div class="form-container sign-in-container">
-        <form name="signupForm" action="signup" method="post">
-            <h1>Information</h1>
-            <input type="text" name="userId" placeholder="아이디를 입력하세요"/>
-            <input type="password" name="password" placeholder="비밀번호를 입력하세요"/>
-            <input type="text" name="tel" placeholder="전화번호를 입력하세요"/>
-            <input type="text" name="address" placeholder="주소를 입력하세요"/>
-            <button type="submit" onclick="return checkFun()">Sign up</button>
-        </form>
-    </div>
-    <div class="overlay-container">
-        <div class="overlay">
-            <div class="overlay-panel overlay-left">
-                <h1>Welcome!</h1>
-                <p>7DAYS에서<br/><br/>공부를 시작해요!</p>
-                <button onclick="location.href='login' ">Log in</button>
-            </div>
-        </div>
-    </div>
-</div>
 </body>
 </html>

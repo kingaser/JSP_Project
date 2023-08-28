@@ -1,0 +1,87 @@
+/* 마이페이지 - 구매목록 */
+.purchase-list-table {
+  border: 1px #a39485 solid;
+  font-size: 0.9em;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.purchase-list-table th {
+  text-align: left;
+}
+
+.purchase-list-table thead {
+  font-weight: bold;
+  /* color: #fff; */
+  color: black;
+  /* background: #73685d; */
+  background: rgb(175, 196, 238);
+}
+
+.purchase-list-table td,
+th {
+  padding: 1em 0.5em;
+  vertical-align: middle;
+}
+
+.purchase-list-table td {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  background: #fff;
+}
+
+.purchase-list-wrapper {
+  width: 70%;
+  margin: 0 auto;
+  height: 100%;
+}
+.purchase-list-title {
+  font-size: 3em;
+  font-weight: 300;
+  line-height: 1em;
+  text-align: center;
+  color: black;
+}
+
+.purchase-list-subtitle {
+  font-size: 1.5em;
+  font-weight: 300;
+  text-align: center;
+  display: block;
+  line-height: 1em;
+  padding-bottom: 2em;
+  color: black;
+}
+.purchase-list-table .align-center {
+  text-align: center;
+}
+.purchase-list-wrapper {
+  width: 70%;
+}
+.continue-shopping {
+  border: none;
+  padding: 5px 10px;
+  color: #000;
+  font-weight: bold;
+}
+
+.continue-shopping,
+.go-to-basket-list {
+  background-color: rgb(175, 196, 238);
+  border: none;
+  height: 28px;
+  font-weight: normal;
+}
+.continue-shopping:hover,
+.go-to-basket-list:hover {
+  text-decoration: underline;
+  font-weight: bold;
+}
+.purchase-list-buttons2 {
+  margin: 0 4px;
+  margin-top: 7px;
+  display: flex;
+  justify-content: space-between;
+}

@@ -31,6 +31,13 @@ public class Reply {
 		this.content = content;
 	}
 
+	public Reply(int r_productId, int r_memberId, String content, String username) {
+		this.r_productId = r_productId;
+		this.r_memberId = r_memberId;
+		this.content = content;
+		this.username = username;
+	}
+
 	public Reply(int memberId, String username, String passwd, String address, String tel, String role, int replyId,
 				 int r_productId, int r_memberId, String replyContent, int productId, String title, String author,
 				 String productContent, String price, String quantity, String image) {
