@@ -45,9 +45,6 @@
                         <form action="/basket/register" method="post">
                             <button class="to-basket" name="productId" value="${p.productId}">추가</button>
                         </form>
-                        <%--                        <form action="basket" method="get">--%>
-                        <%--                            <button class="to-basket" name="command" value="listBasket">장바구니</button>--%>
-                        <%--                        </form>--%>
                     </td>
                 </tr>
                 </tbody>

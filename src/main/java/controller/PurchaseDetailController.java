@@ -3,7 +3,7 @@ package controller;
 import entity.Member;
 import entity.Product;
 import entity.Purchase;
-import entity.Reply;
+
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;

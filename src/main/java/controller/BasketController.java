@@ -34,10 +34,10 @@ public class BasketController extends HttpServlet {
 		String str = "";
 		String command = request.getParameter("command");
 		if (command.equals("listBasket")) {
+
 			HttpSession session = request.getSession();
 			Member member = (Member) session.getAttribute("login");
 			List<Basket> list = basketService.getBaskets(member.getMemberId());
-			request.setAttribute("list", list);
 
 			str = "/view/basket/jsp/basket-list.jsp";
 		} else if (command.equals("detailBasket")) {
@@ -73,6 +73,7 @@ public class BasketController extends HttpServlet {
 			basketService.addBasket(basket);
 
 			response.sendRedirect("/basket?command=listBasket");
+
 		} else if (command.equals("delBasket")) {
 			int basketId = Integer.parseInt(request.getParameter("basketId"));
 			basketService.deleteBasket(basketId);
