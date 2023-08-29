@@ -1,49 +1,127 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<% if (request.getParameter("loginFailed") != null) { %>
-<script>alert('로그인 실패!');</script>
-<% } %>
+
+
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" type="text/css" href="css/login.css">
-    <link rel="icon" href="images/favicon.jpg">
-
-    <script>
-
-    </script>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>purchase</title>
+    <script src="/js/includeHTML.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/purchase.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/Style.css"/>
 </head>
 <body>
+<header class="header" include-html="project-header.html"></header>
 
-<a href="/">
-    <img class="logo" src="images/2nd_project_logo.jpg" alt="logo"/>
-</a>
-<div class="container" id="container">
-    <div class="form-container sign-in-container">
-        <form action="login" method="post">
-            <h1>Log in</h1>
-            <input type="hidden" name="command" value="login">
-            <input type="text" name="username" placeholder="아이디를 입력하세요"/>
-            <input type="password" name="password" placeholder="비밀번호를 입력하세요"/>
-            <button type="submit" name="inOut" value="1">Log in</button>
-        </form>
-    </div>
-    <form action="signup" method="get">
-        <div class="overlay-container">
-            <div class="overlay">
-                <div class="overlay-panel overlay-right">
-                    <h1>Welcome!</h1>
-                    <p>7DAYS에서<br/><br/>공부를 시작해요!</p>
-<%--                    <input type="hidden" name="command" value="signup" />--%>
-                    <button class="ghost" id="signUp">Sign Up</button>
-                </div>
-            </div>
+<main class="main">
+    <div class="purchase-wrapper">
+        <div class="purchase-table-wrapper">
+            <table class="purchase-table">
+                <thead>
+                <tr>
+                    <th width="15%">책 이미지</th>
+                    <th width="20%">제목</th>
+                    <th width="15%">가격</th>
+                    <th width="15%">재고</th>
+                    <th width="20%">구매 개수</th>
+                    <th width="15%">구매</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>
+                        <img src="${p.image}" alt="bookimg"/>
+                    </td>
+                    <td>${p.title}</td>
+                    <td>${p.price}</td>
+                    <td>${p.quantity}</td>
+                    <td>
+                        <input id="quantity" name="quantity" value="1">
+                        <span id="purchase-count">1</span><br/><br/>
+
+                        <button class="up-button" type="button" onclick="countUp()">
+                            up
+                        </button>
+                        <button class="down-button" type="button" onclick="countDown()">
+                            down
+                        </button>
+                    </td>
+
+                    <td>
+                        <button class="purchase-now" id="submitBuy">즉시구매</button>
+                    </td>
+                </tr>
+                </tbody>
+                <tfoot>
+                <td colspan="6" class="tablefoot"></td>
+                </tfoot>
+            </table>
         </div>
-    </form>
-</div>
+    </div>
+</main>
+<footer class="footer" include-html="project-footer.html"></footer>
 </body>
+
+<script>
+    let quan = document.getElementById("quantity")
+    function initialize() {
+        // "purchase-count" 요소에서 초기 값을 가져와서 purchaseCount 변수에 할당
+
+        const purchaseCountElement = document.getElementById("purchase-count");
+        if (purchaseCountElement) {
+            purchaseCount = parseInt(purchaseCountElement.textContent);
+        }
+    }
+    // 구매 수량 증가 함수
+    function countUp() {
+        purchaseCount++;
+        quan.value++
+        updatePurchaseCount();
+
+    }
+    // 구매 수량 감소 함수
+    function countDown() {
+        if (purchaseCount > 0) {
+            purchaseCount--;
+            quan.value--
+            updatePurchaseCount();
+        }
+
+    }
+    // 구매 수량 화면 업데이트 함수
+    function updatePurchaseCount() {
+
+        const purchaseCountElement = document.getElementById("purchase-count");
+        if (purchaseCountElement) {
+            purchaseCountElement.textContent = purchaseCount;
+        }
+
+    }
+    // 페이지 로드 시 초기화 함수 호출
+    initialize();
+
+    let username = '${login.username}';
+    $(document).ready(function() {
+        $("#submitBuy").click(function() {
+            var productId = ${p.productId}; // 제품 ID 설정
+
+            $.ajax({
+                type: "POST",
+                url: "/purchase/check",
+                data: {
+                    productId: productId,
+                    quantity: quan
+                },
+                success: function(response) {
+                    window.location.href = "/purchase?username=" + username;
+                    window.location.reload();
+                },
+                error: function() {
+                    console.error('리뷰 등록 실패');
+                }
+            });
+        });
+    });
+</script>
 </html>

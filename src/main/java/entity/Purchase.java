@@ -10,9 +10,12 @@ public class Purchase {
 
     private int purchaseId;
     private int p_memberId;
+    private int p_productId;
     private String title;
     private String price;
     private String quantity;
+    private String author;
+    private String image;
 
     public Purchase() {
         // TODO Auto-generated constructor stub
@@ -37,19 +40,13 @@ public class Purchase {
         this.quantity = quantity;
     }
 
-    public Purchase(int memberId, String username, String passwd, String address, String tel,
-                    String role, int purchaseId, int p_memberId, String title, String price, String quantity) {
-        this.memberId = memberId;
-        this.username = username;
-        this.passwd = passwd;
-        this.address = address;
-        this.tel = tel;
-        this.role = role;
+    public Purchase(int purchaseId, String price, String quantity, String title, String author, String image) {
         this.purchaseId = purchaseId;
-        this.p_memberId = p_memberId;
-        this.title = title;
         this.price = price;
         this.quantity = quantity;
+        this.title = title;
+        this.author = author;
+        this.image = image;
     }
 
     public int getMemberId() {
@@ -138,5 +135,13 @@ public class Purchase {
 
     public void setQuantity(String quantity) {
         this.quantity = quantity;
+    }
+
+    public int getP_productId() {
+        return p_productId;
+    }
+
+    public void setP_productId(int p_productId) {
+        this.p_productId = p_productId;
     }
 }

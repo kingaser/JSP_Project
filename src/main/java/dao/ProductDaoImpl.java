@@ -28,7 +28,7 @@ public class ProductDaoImpl implements ProductDao {
 
             while (rs.next()) {
                 list.add(new Product(rs.getInt("PRODUCTID"), rs.getString("TITLE"), rs.getString("AUTHOR"),
-                        rs.getString("PRICE"), rs.getString("QUANTITY"), rs.getString("IMAGE")));
+                        rs.getString("PRICE"), rs.getString("QUANTITY"), rs.getString("IMAGE"), rs.getString("CONTENT")));
             }
         } catch (SQLException e) {
             // TODO Auto-generated catch block
@@ -81,10 +81,10 @@ public class ProductDaoImpl implements ProductDao {
             pstmt = con.prepareStatement(sql);
             pstmt.setString(1, product.getTitle());
             pstmt.setString(2, product.getAuthor());
-            pstmt.setString(3, product.getPrice());
-            pstmt.setString(4, product.getQuantity());
-            pstmt.setString(5, product.getImage());
-            pstmt.setString(6, product.getContent());
+            pstmt.setString(3, product.getContent());
+            pstmt.setString(4, product.getPrice());
+            pstmt.setString(5, product.getQuantity());
+            pstmt.setString(6, product.getImage());
 
             pstmt.executeUpdate();
         } catch (SQLException e) {

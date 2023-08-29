@@ -18,6 +18,15 @@ public class Product {
 		this.image = image;
 	}
 
+	public Product(String title, String author, String price, String quantity, String image, String content) {
+		this.title = title;
+		this.author = author;
+		this.price = price;
+		this.quantity = quantity;
+		this.image = image;
+		this.content = content;
+	}
+
 	public Product(int productId, String title, String author, String price, String quantity, String image, String content) {
 		this.productId = productId;
 		this.title = title;

@@ -1,5 +1,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%
+    Object adminAttribute = session.getAttribute("admin");
+    boolean isAdmin = adminAttribute != null && adminAttribute.equals("admin");
+%>
+
 <style>
     #header-container {
         background-color: rgb(175, 196, 238);
@@ -92,10 +97,28 @@
         <a href="/" onclick="logout()">
             로그아웃
         </a>
-        <a href="purchase?command=listPurchase">마이페이지</a>
+        <a href="/purchase">마이페이지</a>
     </nav>
 </div>
+<div id="header-container-with-manager-login">
+    <a href="/"><h1>개발자를 위한 온라인 북스토어</h1></a>
+    <nav class="header-menu">
+        <a href="/product/add">상품등록</a>
+        <a href="/admin/member">회원관리</a>
+        <a href="/" onclick="logout()">
+            로그아웃
+        </a>
+    </nav>
+</div>
+
 <script>
+    var isLogged = <%= session.getAttribute("login") != null %>;
+    var adminLogged = <%= isAdmin %>;
+    <%--var isLogged = <%= session.getAttribute("login") != null %>;--%>
+    <%--var adminLogged = <%= session.getAttribute("admin").equals("admin") %>;--%>
+    <%--console.log("변수저장댐");--%>
+
+
     var isLogged = <%= session.getAttribute("login") != null %>;
 
     function logout() {
@@ -119,7 +142,13 @@
                 console.error('Error occurred:', error);
             });
     }
-    if (isLogged) {
+
+    if (isLogged && adminLogged) {
+        document.getElementById("header-container-with-manager-login").style.display = "flex";
+        document.getElementById("header-container-with-login").style.display = "none";
+        document.getElementById("header-container").style.display = "none";
+
+    } else if (isLogged) {
         document.getElementById("header-container-with-login").style.display = "flex";
         document.getElementById("header-container").style.display = "none";
         document.getElementById("header-container-with-manager-login").style.display = "none";
@@ -128,5 +157,6 @@
         document.getElementById("header-container-with-login").style.display = "none";
         document.getElementById("header-container-with-manager-login").style.display = "none";
     }
+
 
 </script>

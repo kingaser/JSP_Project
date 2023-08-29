@@ -58,9 +58,6 @@
                         <form action="purchase/detail?id=" method="get">
                             <button class="to-add" name="id" value="${p.productId}">구매 페이지</button>
                         </form>
-<%--                        <form action="basket" method="get">--%>
-<%--                            <button class="to-basket" name="command" value="listBasket">장바구니</button>--%>
-<%--                        </form>--%>
                     </td>
                 </tr>
             </c:forEach>

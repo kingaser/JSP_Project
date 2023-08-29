@@ -11,7 +11,6 @@ import jakarta.servlet.http.Part;
 import service.ProductService;
 import service.ProductServiceImpl;
 
-import java.io.File;
 import java.io.IOException;
 
 @MultipartConfig(
@@ -50,8 +49,9 @@ public class ProductAddController extends HttpServlet {
         String fileName = filePart.getSubmittedFileName();
 
         String filePath = "\\view\\product\\images\\" + fileName;
+        String content = request.getParameter("content");
 
-        Product product = new Product(title, author, price, quantity, filePath);
+        Product product = new Product(title, author, price, quantity, filePath, content);
         productService.register(product);
 
         response.sendRedirect("/");
