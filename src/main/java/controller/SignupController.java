@@ -47,6 +47,7 @@ public class SignupController extends HttpServlet {
             System.out.println("회원가입 성공");
             str = "/WEB-INF/view/member/jsp/login.jsp";
         } else {
+            response.getWriter().println("<script>alert('회원가입에 실패했습니다. 다시 시도해주세요.');</script>");
             System.out.println("회원가입 실패");
             str = "/WEB-INF/view/member/jsp/signup.jsp";
         }

@@ -53,12 +53,7 @@ public class LoginController extends HttpServlet {
             System.out.println("로그인 실패");
             response.sendRedirect("/login?loginFailed=true");
         }
-//        else {
-//            System.out.println("로그인 실패");
-//            String alertLogin = "<script>alert('로그인 실패!'); location.href='/login'</script>";
-//            response.getWriter().write(alertLogin);
-////            response.sendRedirect("/login");
-//        }
-        // forward
+
+
     }
 }
