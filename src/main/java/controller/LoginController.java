@@ -3,7 +3,10 @@ package controller;
 import entity.Member;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.*;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import service.MemberServiceImpl;
 
 import java.io.IOException;
@@ -35,18 +38,31 @@ public class LoginController extends HttpServlet {
 
         Member login = new MemberServiceImpl().login(m);
 
-        if (login != null) {
-            session = request.getSession();
+
+        if (login != null&&login.getRole().equals("admin")) {
+            HttpSession session = request.getSession();
+            session.setAttribute("login", login);
+            session.setAttribute("admin",login.getRole());
+//          15분 세션유지
+            session.setMaxInactiveInterval(15 * 60);
+            System.out.println("관리자님 환영해요");
+
+            response.sendRedirect("/");
+        } else if (login!=null) {
+            HttpSession session = request.getSession();
+
             session.setAttribute("login", login);
 //          15분 세션유지
             session.setMaxInactiveInterval(15 * 60);
-            System.out.println("로그인 성공");
+            System.out.println("회원님 환영해요");
 
             response.sendRedirect("/");
+
         } else {
             System.out.println("로그인 실패");
             response.sendRedirect("/login?loginFailed=true");
         }
+
     }
 
 }

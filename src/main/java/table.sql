@@ -17,7 +17,7 @@ start with 1 increment by 1;
 create table member( 
 	memberId number primary key,
 	username varchar2(20) unique,
-	passwd varchar2(20) not null,
+	password varchar2(20) not null,
 	address varchar2(50) not null,
 	tel varchar2(20) not null,
 	role varchar2(10) not null	
@@ -26,12 +26,12 @@ create table member(
 --product
 create table product(
 	productId number primary key,
-	title varchar2(30) unique,
+	title varchar2(100) unique,
 	author varchar2(20) not null,
-	productcontent clob,
-	price varchar2(20) not null,
-	quantity varchar2(20) not null,
-	image varchar2(200)
+	content clob,
+	price varchar2(100) not null,
+	quantity varchar2(100) not null,
+	image varchar2(700)
 );
 
 --basket

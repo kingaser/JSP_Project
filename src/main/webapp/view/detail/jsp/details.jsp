@@ -37,13 +37,13 @@
                     <td>${p.author}</td>
                     <td>${p.price}</td>
                     <td>
-                        <form action="/purchase/detail?id=${p.productId}" method="get">
-                            <button class="to-add">즉시 구매</button>
+                        <form action="/purchase/check?id=" method="get">
+                            <button class="to-add" type="submit" name="id" value="${p.productId}">즉시 구매</button>
                         </form>
                     </td>
                     <td>
                         <form action="/basket/register" method="post">
-                            <button class="to-basket" name="productId" value="${p.productId}">추가</button>
+                            <button class="to-basket" name="id" value="${p.productId}">추가</button>
                         </form>
                     </td>
                 </tr>

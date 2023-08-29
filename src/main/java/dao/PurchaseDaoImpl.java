@@ -15,7 +15,13 @@ public class PurchaseDaoImpl implements PurchaseDao {
 	public List<Purchase> selectAll() {
 		// TODO Auto-generated method stub
 		List<Purchase> list = new ArrayList<Purchase>();
-		String sql = "select * from member m left join purchase p on m.memberId=p.p_memberId order by m.username asc";
+		String sql = "select a.purchaseid, a.price, a.quantity, a.title, b.author, b.image from (" +
+				" select * from member m" +
+				" left join purchase p" +
+				" on m.memberId=p.p_memberId) a" +
+				" left join product b" +
+				" on a.productId = b.productId" +
+				" order by memberid desc";
 		try {
 			String url = "jdbc:oracle:thin:@localhost:1521/xepdb1";
 			Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -23,9 +29,7 @@ public class PurchaseDaoImpl implements PurchaseDao {
 			pstmt = con.prepareStatement(sql);
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {
-				list.add(new Purchase(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
-						rs.getString(6), rs.getInt(7), rs.getInt(8), rs.getString(9), rs.getString(10),
-						rs.getString(11)));
+				list.add(new Purchase());
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -40,7 +44,7 @@ public class PurchaseDaoImpl implements PurchaseDao {
 	@Override
 	public void insert(Purchase purchase) {
 		// TODO Auto-generated method stub
-		String sql = "insert into purchase values(purchaseId.nextval,?,?,?,?)";
+		String sql = "insert into purchase values(purchaseId.nextval,?,?,?,?,?)";
 		try {
 			String url = "jdbc:oracle:thin:@localhost:1521/xepdb1";
 			Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -50,6 +54,7 @@ public class PurchaseDaoImpl implements PurchaseDao {
 			pstmt.setString(2, purchase.getTitle());
 			pstmt.setString(3, purchase.getPrice());
 			pstmt.setString(4, purchase.getQuantity());
+			pstmt.setInt(5, purchase.getP_productId());
 
 			pstmt.executeUpdate();
 		} catch (SQLException e) {

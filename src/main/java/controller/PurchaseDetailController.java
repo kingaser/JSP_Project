@@ -1,8 +1,7 @@
 package controller;
 
-import entity.Member;
 import entity.Product;
-import entity.Purchase;
+import entity.Reply;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -18,9 +17,7 @@ import java.util.List;
 @WebServlet("/purchase/detail")
 public class PurchaseDetailController extends HttpServlet {
 
-    MemberService memberService;
     ProductService productService;
-    PurchaseService purchaseService;
     ReplyService replyService;
 
     public PurchaseDetailController() {
@@ -42,28 +39,5 @@ public class PurchaseDetailController extends HttpServlet {
         String url = "/view/detail/jsp/details.jsp";
         request.getRequestDispatcher(url)
                 .forward(request, response);
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.setCharacterEncoding("UTF-8");
-        response.setContentType("text/html; charset=UTF-8");
-
-        String str = "";
-        HttpSession session = request.getSession();
-        int memberId = (int) session.getAttribute("memberId");
-        Member member = memberService.getMemberById(memberId);
-
-        Product product = productService.getProductByTitle("title");
-
-        Purchase purchase = new Purchase(member.getMemberId(),
-                product.getTitle(),
-                product.getPrice(),
-                product.getQuantity());
-
-        purchaseService.buy(purchase);
-
-        str = "/view/purchase/.jsp";
-        request.getRequestDispatcher(str).forward(request, response);
     }
 }
