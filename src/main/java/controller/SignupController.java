@@ -27,18 +27,12 @@ public class SignupController extends HttpServlet {
 
         String str = "";
 
-        String username = request.getParameter("username");
+        String userId = request.getParameter("userId");
         String password = request.getParameter("password");
-        String address = request.getParameter("address");
         String tel = request.getParameter("tel");
-//        String role = request.getParameter("role");
+        String address = request.getParameter("address");
 
-        Member m = new Member(username, password, address, tel);
-//        m.setUsername(username);
-//        m.setPassword(password);
-//        m.setAddress(address);
-//        m.setPhoneNumber(tel);
-//        m.setRole(role);
+        Member m = new Member(userId, password, address, tel);
 
         MemberServiceImpl ser = new MemberServiceImpl();
         int result = ser.register(m);

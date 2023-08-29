@@ -1,6 +1,7 @@
 package controller;
 
 import entity.Basket;
+import entity.Member;
 import entity.Reply;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -18,68 +19,51 @@ import java.util.List;
 
 @WebServlet("/reply")
 public class ReplyController extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-	ReplyService replyService = null;
-	BasketService basketService = null;
+    private static final long serialVersionUID = 1L;
+    ReplyService replyService = null;
+    BasketService basketService = null;
 
-	public ReplyController() {
-		// TODO Auto-generated constructor stub
-		replyService = new ReplyServiceImpl();
-		basketService = new BasketServiceImpl();
-	}
+    public ReplyController() {
+        // TODO Auto-generated constructor stub
+        replyService = new ReplyServiceImpl();
+        basketService = new BasketServiceImpl();
+    }
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		response.setCharacterEncoding("UTF-8");
-		response.setContentType("text/html; charset=UTF-8");
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+//        response.setCharacterEncoding("UTF-8");
+//        response.setContentType("text/html; charset=UTF-8");
+//
+//        String str = "";
+//        String command = request.getParameter("command");
+//        if (command.equals("listReply")) {
+//            List<Reply> list = null;
+//            list = replyService.getReplies();
+//            request.setAttribute("list", list);
+//            str = "/view/reply/.jsp";
+//        }
+//        request.getRequestDispatcher(str).forward(request, response);
 
-		String str = "";
-		String command = request.getParameter("command");
-		if (command.equals("listReply")) {
-			List<Reply> list = null;
-			list = replyService.getReplies();
-			request.setAttribute("list", list);
-			str = "/view/reply/.jsp";
-		}
-		request.getRequestDispatcher(str).forward(request, response);
+    }
 
-	}
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setCharacterEncoding("UTF-8");
+        response.setContentType("text/html; charset=UTF-8");
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		response.setCharacterEncoding("UTF-8");
-		response.setContentType("text/html; charset=UTF-8");
+        String str = "";
 
-		String str = "";
-		String command = request.getParameter("command");
-		if (command.equals("registerForm")) {
+        HttpSession session = request.getSession();
+        Member member = (Member) session.getAttribute("login");
+        String replyContent = request.getParameter("replyContent");
+        int r_productId = Integer.parseInt(request.getParameter("productId"));
 
-			str = "/view/reply/.jsp";
-		} else if (command.equals("register")) {
+        Reply reply = new Reply();
 
-			HttpSession session = request.getSession();
-			String username = (String) session.getAttribute("username");
-			String replyContent = request.getParameter("replyContent");
+        reply.setR_memberId(member.getMemberId());
+        reply.setR_productId(r_productId);
+        reply.setReplyContent(replyContent);
+        replyService.addReply(reply);
 
-			Reply reply = new Reply();
-			Basket basket = basketService.getByUsername(username);
-
-			int r_memberId = basket.getMemberId();
-			int r_productId = basket.getProductId();
-
-			reply.setR_memberId(r_memberId);
-			reply.setR_productId(r_productId);
-			reply.setReplyContent(replyContent);
-			replyService.addReply(reply);
-
-			str = "/view/reply/list.jsp";
-		} else if (command.equals("delBasket")) {
-			HttpSession session = request.getSession();
-			int replyId = Integer.parseInt(request.getParameter("replyId"));
-			replyService.delReply(replyId);
-
-			str = "/view/reply/list.jsp";
-		}
-		request.getRequestDispatcher(str).forward(request, response);
-	}
+    }
 }

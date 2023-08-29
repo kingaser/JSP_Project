@@ -44,7 +44,6 @@ public class Basket {
     public Basket(int memberId, String username, String passwd, String address, String tel, String role, int basketId,
                   int b_memberId, int b_productId, int productId, String title, String author, String content, String price,
                   String quantity, String image) {
-        super();
         this.memberId = memberId;
         this.username = username;
         this.passwd = passwd;

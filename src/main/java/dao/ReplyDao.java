@@ -9,7 +9,7 @@ public interface ReplyDao {
 
 	void delete(int replyId);
 
-	List<Reply> selectAll();
+	List<Reply> selectAll(int productId);
 
 	Reply selectByUsername(String username);
 }

@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>details</title>
     <script src="/js/includeHTML.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" type="text/css" href="/css/details.css"/>
     <link rel="stylesheet" type="text/css" href="/css/Style.css"/>
     <link rel="icon" href="/images/favicon.jpg">
@@ -22,11 +23,11 @@
                 <thead>
                 <tr>
                     <th width="15%">책 이미지</th>
-                    <th width="20%">제목</th>
-                    <th width="15%">저자</th>
-                    <th width="15%">가격</th>
-                    <th width="25%">책소개</th>
-                    <th width="10%">비고</th>
+                    <th width="30%">제목</th>
+                    <th width="5%">저자</th>
+                    <th width="10%">가격</th>
+                    <th width="10%">구매</th>
+                    <th width="10%">장바구니</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -35,15 +36,15 @@
                     <td class="title indent text-align-left">${p.title}</td>
                     <td>${p.author}</td>
                     <td>${p.price}</td>
-                    <td>${p.quantity}</td>
                     <td>
-<%--                        <form action="purchase/detail?id=${pid}" method="get">--%>
-                        <button class="to-add">즉시구매</button>
-                        <button class="to-basket">장바구니</button>
-<%--                        </form>--%>
-                        <%--                        <form action="basket" method="get">--%>
-                        <%--                            <button class="to-basket" name="command" value="listBasket">장바구니</button>--%>
-                        <%--                        </form>--%>
+                        <form action="/purchase/detail?id=${p.productId}" method="get">
+                            <button class="to-add">즉시 구매</button>
+                        </form>
+                    </td>
+                    <td>
+                        <form action="/basket/register" method="post">
+                            <button class="to-basket" name="productId" value="${p.productId}">추가</button>
+                        </form>
                     </td>
                 </tr>
                 </tbody>
@@ -57,33 +58,20 @@
                 <legend style="text-align: center"><h1>리뷰</h1></legend>
                 <ul class="detail-review">
                     <p class="if-empty-review">등록된 리뷰가 없습니다</p>
-                    <li>
-                        <span>아이디 님</span>
-                        <p>
-                            내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용
-                        </p>
-                    </li>
-                    <li>
-                        <span>아이디 님</span>
-                        <p>
-                            내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용
-                        </p>
-                    </li>
-                    <li>
-                        <span>아이디 님</span>
-                        <p>
-                            내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용
-                        </p>
-                    </li>
+                    <c:forEach var="reply" items="${replyList}">
+                        <li>
+                            <span>${reply.username}</span>
+                            <p>${reply.content}</p>
+                        </li>
+                    </c:forEach>
                 </ul>
             </fieldset>
             <div class="write-review">
                 <form action="#">
                     <fieldset class="write-review-fieldset">
                         <legend><h1>리뷰 등록</h1></legend>
-
                         <textarea name="review" id="review"></textarea>
-                        <button type="submit" class="review-button">리뷰 등록</button>
+                        <button type="button" id="submitReviewButton">리뷰 등록</button>
                     </fieldset>
                 </form>
             </div>
@@ -93,3 +81,27 @@
 <footer class="footer" include-html="project-footer.html"></footer>
 </body>
 </html>
+<script>
+    $(document).ready(function() {
+        $("#submitReviewButton").click(function() {
+            var reviewContent = $("#review").val();
+            var productId = ${p.productId}; // 제품 ID 설정
+
+            $.ajax({
+                type: "POST",
+                url: "/reply",
+                data: {
+                    replyContent: reviewContent,
+                    productId: productId
+                },
+                success: function(response) {
+                    window.location.href = "/purchase/detail?id=" + productId;
+                    window.location.reload();
+                },
+                error: function() {
+                    console.error('리뷰 등록 실패');
+                }
+            });
+        });
+    });
+</script>

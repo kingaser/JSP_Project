@@ -9,10 +9,11 @@ public interface MemberService {
 
 	Member login(String username, String passwd);
 
-	void deleteMember(String username);
+	void deleteMember(String memberId);
 
-	Member getMemberByUsername(String username);
+	Member getMemberById(int id);
 
-	List<Member> getMembers();
+	List<Member> selectAll();
 
+	Member getMemberByUsername(String sessionUsername);
 }

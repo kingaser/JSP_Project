@@ -2,16 +2,14 @@ package controller;
 
 import entity.Basket;
 import entity.Member;
+import entity.Product;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import service.BasketService;
-import service.BasketServiceImpl;
-import service.MemberService;
-import service.MemberServiceImpl;
+import service.*;
 
 import java.io.IOException;
 import java.util.List;
@@ -36,8 +34,10 @@ public class BasketController extends HttpServlet {
 		String str = "";
 		String command = request.getParameter("command");
 		if (command.equals("listBasket")) {
-			List<Basket> list = basketService.getBaskets();
-			request.setAttribute("list", list);
+
+			HttpSession session = request.getSession();
+			Member member = (Member) session.getAttribute("login");
+			List<Basket> list = basketService.getBaskets(member.getMemberId());
 
 			str = "/view/basket/jsp/basket-list.jsp";
 		} else if (command.equals("detailBasket")) {
@@ -61,9 +61,9 @@ public class BasketController extends HttpServlet {
 		String command = request.getParameter("command");
 		if (command.equals("register")) {
 			HttpSession session = request.getSession();
-			String username = (String) session.getAttribute("username");
 
-			Member member = memberService.getMemberByUsername(username);
+			String sessionUsername = String.valueOf(session.getAttribute("username"));
+			Member member = (Member) session.getAttribute("login");
 			int b_memberId = member.getMemberId();
 			int b_productId = Integer.parseInt(request.getParameter("productId"));
 
@@ -72,7 +72,8 @@ public class BasketController extends HttpServlet {
 			basket.setB_productId(b_productId);
 			basketService.addBasket(basket);
 
-			str = "/view/basket/.jsp";
+			response.sendRedirect("/basket?command=listBasket");
+
 		} else if (command.equals("delBasket")) {
 			int basketId = Integer.parseInt(request.getParameter("basketId"));
 			basketService.deleteBasket(basketId);

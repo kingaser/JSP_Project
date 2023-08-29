@@ -38,6 +38,7 @@
                 <div class="overlay-panel overlay-right">
                     <h1>Welcome!</h1>
                     <p>7DAYS에서<br/><br/>공부를 시작해요!</p>
+<%--                    <input type="hidden" name="command" value="signup" />--%>
                     <button class="ghost" id="signUp">Sign Up</button>
                 </div>
             </div>
