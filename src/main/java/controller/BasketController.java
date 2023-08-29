@@ -34,11 +34,12 @@ public class BasketController extends HttpServlet {
 		String str = "";
 		String command = request.getParameter("command");
 		if (command.equals("listBasket")) {
+
 			HttpSession session = request.getSession();
 			Member member = (Member) session.getAttribute("login");
 			List<Basket> list = basketService.getBaskets(member.getMemberId());
 			request.setAttribute("list", list);
-
+      
 			str = "/view/basket/jsp/basket-list.jsp";
 		} else if (command.equals("detailBasket")) {
 			Basket basket = null;
