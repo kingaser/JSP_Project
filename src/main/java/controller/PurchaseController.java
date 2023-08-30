@@ -32,9 +32,10 @@ public class PurchaseController extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
         response.setContentType("text/html; charset=UTF-8");
 
-        List<Purchase> list = purchaseService.getPurchases();
         session = request.getSession();
+        Member member = (Member) session.getAttribute("login");
         session.setAttribute("login", session.getAttribute("login"));
+        List<Purchase> list = purchaseService.getPurchases(member.getMemberId());
 
         request.setAttribute("list", list);
 

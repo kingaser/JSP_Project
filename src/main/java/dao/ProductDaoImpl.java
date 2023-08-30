@@ -99,17 +99,14 @@ public class ProductDaoImpl implements ProductDao {
     @Override
     public void modify(Product product) {
         // TODO Auto-generated method stub
-        String sql = "update product set author=?, price=?, quantity=?, image=? where productId=?";
+        String sql = "update product set quantity=? where productId=?";
         try {
             String url = "jdbc:oracle:thin:@localhost:1521/xepdb1";
             Class.forName("oracle.jdbc.driver.OracleDriver");
             con = DriverManager.getConnection(url, "JSP", "123123");
             pstmt = con.prepareStatement(sql);
-            pstmt.setString(1, product.getAuthor());
-            pstmt.setString(2, product.getPrice());
-            pstmt.setString(3, product.getQuantity());
-            pstmt.setString(4, product.getImage());
-            pstmt.setInt(5, product.getProductId());
+            pstmt.setString(1, product.getQuantity());
+            pstmt.setInt(2, product.getProductId());
             pstmt.executeUpdate();
         } catch (SQLException e) {
             // TODO Auto-generated catch block

@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -31,98 +32,14 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>
-                        스프링스프링스프링스프링스프링스프링스프링스프링스프링스프링스프링스프링스프링스프링스프링스프링스프링스프링스프링스프링스프링스프링스프링스프링스프링스프링스프링
-                    </td>
-                    <td class="align-center">20000원</td>
-                    <td class="align-center">3개</td>
-                    <td class="align-center">가격 x 수량</td>
-                </tr>
-                <tr>
-                    <td>자바</td>
-                    <td class="align-center">30000원</td>
-                    <td class="align-center">4개</td>
-                    <td class="align-center">가격 x 수량</td>
-                </tr>
-                <tr>
-                    <td>파이썬</td>
-                    <td class="align-center">20000원</td>
-                    <td class="align-center">9개</td>
-                    <td class="align-center">가격 x 수량</td>
-                </tr>
-                <tr>
-                    <td>자바</td>
-                    <td class="align-center">30000원</td>
-                    <td class="align-center">4개</td>
-                    <td class="align-center">가격 x 수량</td>
-                </tr>
-                <tr>
-                    <td>파이썬</td>
-                    <td class="align-center">20000원</td>
-                    <td class="align-center">9개</td>
-                    <td class="align-center">가격 x 수량</td>
-                </tr>
-                <tr>
-                    <td>자바</td>
-                    <td class="align-center">30000원</td>
-                    <td class="align-center">4개</td>
-                    <td class="align-center">가격 x 수량</td>
-                </tr>
-                <tr>
-                    <td>파이썬</td>
-                    <td class="align-center">20000원</td>
-                    <td class="align-center">9개</td>
-                    <td class="align-center">가격 x 수량</td>
-                </tr>
-                <tr>
-                    <td>자바</td>
-                    <td class="align-center">30000원</td>
-                    <td class="align-center">4개</td>
-                    <td class="align-center">가격 x 수량</td>
-                </tr>
-                <tr>
-                    <td>파이썬</td>
-                    <td class="align-center">20000원</td>
-                    <td class="align-center">9개</td>
-                    <td class="align-center">가격 x 수량</td>
-                </tr>
-                <tr>
-                    <td>자바</td>
-                    <td class="align-center">30000원</td>
-                    <td class="align-center">4개</td>
-                    <td class="align-center">가격 x 수량</td>
-                </tr>
-                <tr>
-                    <td>파이썬</td>
-                    <td class="align-center">20000원</td>
-                    <td class="align-center">9개</td>
-                    <td class="align-center">가격 x 수량</td>
-                </tr>
-                <tr>
-                    <td>자바</td>
-                    <td class="align-center">30000원</td>
-                    <td class="align-center">4개</td>
-                    <td class="align-center">가격 x 수량</td>
-                </tr>
-                <tr>
-                    <td>파이썬</td>
-                    <td class="align-center">20000원</td>
-                    <td class="align-center">9개</td>
-                    <td class="align-center">가격 x 수량</td>
-                </tr>
-                <tr>
-                    <td>자바</td>
-                    <td class="align-center">30000원</td>
-                    <td class="align-center">4개</td>
-                    <td class="align-center">가격 x 수량</td>
-                </tr>
-                <tr>
-                    <td>파이썬</td>
-                    <td class="align-center">20000원</td>
-                    <td class="align-center">9개</td>
-                    <td class="align-center">가격 x 수량</td>
-                </tr>
+                <c:forEach var="purchaseList" items="${list}">
+                    <tr>
+                        <td class="align-center"><img src="${purchaseList.image}"></td>
+                        <td>${purchaseList.title}</td>
+                        <td class="align-center">${purchaseList.quantity}</td>
+                        <td class="align-center">${purchaseList.price}</td>
+                    </tr>
+                </c:forEach>
                 </tbody>
             </table>
         </div>

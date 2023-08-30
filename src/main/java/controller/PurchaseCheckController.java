@@ -13,6 +13,7 @@ import jakarta.servlet.http.HttpSession;
 import service.ProductService;
 import service.ProductServiceImpl;
 import service.PurchaseService;
+import service.PurchaseServiceImpl;
 
 import java.io.IOException;
 
@@ -45,7 +46,7 @@ public class PurchaseCheckController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setCharacterEncoding("UTF-8");
         response.setContentType("text/html; charset=UTF-8");
-
+        purchaseService = new PurchaseServiceImpl();
         String str = "";
 
         int productId = Integer.parseInt(request.getParameter("productId"));
@@ -60,7 +61,12 @@ public class PurchaseCheckController extends HttpServlet {
         purchase.setTitle(product.getTitle());
         purchase.setPrice(String.valueOf(Integer.parseInt(product.getPrice()) * Integer.parseInt(purchaseQuantity)));
         purchase.setQuantity(purchaseQuantity);
+        purchase.setP_productId(productId);
 
         purchaseService.buy(purchase);
+
+        Integer updateQuantity = Integer.parseInt(product.getQuantity()) - Integer.parseInt(purchaseQuantity);
+        product.setQuantity(String.valueOf(updateQuantity));
+        productService.editProduct(product);
     }
 }

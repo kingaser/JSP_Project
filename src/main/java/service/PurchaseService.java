@@ -8,5 +8,5 @@ public interface PurchaseService {
 
 	void buy(Purchase purchase);
 
-	List<Purchase> getPurchases();
+	List<Purchase> getPurchases(int memberId);
 }

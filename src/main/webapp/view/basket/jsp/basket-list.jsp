@@ -42,10 +42,14 @@
                     <td align="center">${b.title}</td>
                     <td>${b.price}</td>
                     <td class="align-center">
-                        <button>구매</button>
+                        <form action="/purchase/check?id=" method="get">
+                            <button class="to-add" type="submit" name="id" value="${b.b_productId}">구매 하기</button>
+                        </form>
                     </td>
                         <td class="align-center">
-                        <button>삭제</button>
+                            <form action="/basket" method="post">
+                                <button class="to-basket" type="submit" name="basketId" value="${b.basketId}">삭제</button>
+                            </form>
                         </c:forEach>
                     </td>
                 </tr>
@@ -54,8 +58,12 @@
             </table>
         </div>
         <div class="basket-buttons2">
-            <button class="continue-shopping">계속 쇼핑하기</button>
-            <button class="go-to-purchase-list">구매목록 가기</button>
+            <form action="/" method="get">
+                <button class="continue-shopping">계속 쇼핑하기</button>
+            </form>
+            <form action="/purchase" method="get">
+                <button class="go-to-basket-list">구매목록 가기</button>
+            </form>
         </div>
     </div>
 </main>

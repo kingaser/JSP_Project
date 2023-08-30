@@ -12,24 +12,29 @@ public class PurchaseDaoImpl implements PurchaseDao {
 
 
 	@Override
-	public List<Purchase> selectAll() {
+	public List<Purchase> selectAll(int memberId) {
 		// TODO Auto-generated method stub
-		List<Purchase> list = new ArrayList<Purchase>();
-		String sql = "select a.purchaseid, a.price, a.quantity, a.title, b.author, b.image from (" +
-				" select * from member m" +
-				" left join purchase p" +
-				" on m.memberId=p.p_memberId) a" +
-				" left join product b" +
-				" on a.productId = b.productId" +
-				" order by memberid desc";
+		List<Purchase> list = new ArrayList<>();
+		String sql = "select a.purchaseid, a.price, a.quantity, a.title, b.author, b.image from( " +
+				"select * from member m " +
+				"left join purchase p " +
+				"on m.memberId=p.p_memberId) a " +
+				"left join product b " +
+				"on a.productId = b.productId " +
+				"where a.memberid = ? " +
+				"order by purchaseId desc";
 		try {
 			String url = "jdbc:oracle:thin:@localhost:1521/xepdb1";
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			con = DriverManager.getConnection(url, "JSP", "123123");
 			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, memberId);
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {
-				list.add(new Purchase());
+				list.add(new Purchase(rs.getInt("purchaseId"),
+						rs.getString("price"), rs.getString("quantity"),
+						rs.getString("title"), rs.getString("author"),
+						rs.getString("image")));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

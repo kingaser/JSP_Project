@@ -21,7 +21,7 @@ public class PurchaseServiceImpl implements PurchaseService {
 		purchaseDao.insert(purchase);
 	}
 
-	public List<Purchase> getPurchases() {
-		return purchaseDao.selectAll();
+	public List<Purchase> getPurchases(int memberId) {
+		return purchaseDao.selectAll(memberId);
 	}
 }

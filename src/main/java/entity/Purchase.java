@@ -144,4 +144,20 @@ public class Purchase {
     public void setP_productId(int p_productId) {
         this.p_productId = p_productId;
     }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
 }
