@@ -18,7 +18,6 @@ public class LoginController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
         String str = "/view/member/jsp/login.jsp";
         request.getRequestDispatcher(str)
                 .forward(request, response);
@@ -39,6 +38,7 @@ public class LoginController extends HttpServlet {
 
         Member login = new MemberServiceImpl().login(m);
 
+
         if (login != null&&login.getRole().equals("admin")) {
             HttpSession session = request.getSession();
             session.setAttribute("login", login);
@@ -50,6 +50,7 @@ public class LoginController extends HttpServlet {
             response.sendRedirect("/");
         } else if (login!=null) {
             HttpSession session = request.getSession();
+
             session.setAttribute("login", login);
 //          15분 세션유지
             session.setMaxInactiveInterval(15 * 60);
@@ -62,7 +63,6 @@ public class LoginController extends HttpServlet {
             response.sendRedirect("/login?loginFailed=true");
         }
 
-        // forward
     }
 
 }

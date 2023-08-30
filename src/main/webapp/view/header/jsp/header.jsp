@@ -4,7 +4,6 @@
     Object adminAttribute = session.getAttribute("admin");
     boolean isAdmin = adminAttribute != null && adminAttribute.equals("admin");
 %>
-
 <style>
     #header-container {
         background-color: rgb(175, 196, 238);
@@ -147,7 +146,6 @@
         document.getElementById("header-container-with-manager-login").style.display = "flex";
         document.getElementById("header-container-with-login").style.display = "none";
         document.getElementById("header-container").style.display = "none";
-
     } else if (isLogged) {
         document.getElementById("header-container-with-login").style.display = "flex";
         document.getElementById("header-container").style.display = "none";
@@ -157,6 +155,5 @@
         document.getElementById("header-container-with-login").style.display = "none";
         document.getElementById("header-container-with-manager-login").style.display = "none";
     }
-
-
 </script>
+

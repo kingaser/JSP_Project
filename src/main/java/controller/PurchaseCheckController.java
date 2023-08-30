@@ -1,5 +1,6 @@
 package controller;
 
+
 import entity.Member;
 import entity.Product;
 import entity.Purchase;
@@ -28,6 +29,7 @@ public class PurchaseCheckController extends HttpServlet {
         int id = Integer.parseInt(request.getParameter("id"));
 
         productService = new ProductServiceImpl();
+
         Product product = productService.getProduct(id);
         int pid = product.getProductId();
         request.setAttribute("p", product);

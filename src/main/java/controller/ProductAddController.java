@@ -52,6 +52,7 @@ public class ProductAddController extends HttpServlet {
         String content = request.getParameter("content");
 
         Product product = new Product(title, author, price, quantity, filePath, content);
+
         productService.register(product);
 
         response.sendRedirect("/");
