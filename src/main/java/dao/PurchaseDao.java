@@ -8,5 +8,5 @@ public interface PurchaseDao {
 
 	void insert(Purchase purchase);
 
-	List<Purchase> selectAll();
+	List<Purchase> selectAll(int memberId);
 }

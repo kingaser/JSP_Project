@@ -1,5 +1,5 @@
+<%@ page import="entity.Member" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>purchase</title>
     <script src="/js/includeHTML.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" type="text/css" href="/css/purchase.css"/>
     <link rel="stylesheet" type="text/css" href="/css/Style.css"/>
 </head>
@@ -64,31 +65,40 @@
 </body>
 
 <script>
+    <%
+    Member member = (Member) session.getAttribute("login");
+    %>
     let quan = document.getElementById("quantity")
-    function initialize() {
-        // "purchase-count" 요소에서 초기 값을 가져와서 purchaseCount 변수에 할당
+    let username = '<%= member.getUsername() %>;'
+    let pid = ${p.productId};
 
+    function initialize() {
         const purchaseCountElement = document.getElementById("purchase-count");
+
+        // "purchase-count" 요소에서 초기 값을 가져와서 purchaseCount 변수에 할당
         if (purchaseCountElement) {
             purchaseCount = parseInt(purchaseCountElement.textContent);
         }
     }
+
     // 구매 수량 증가 함수
     function countUp() {
         purchaseCount++;
-        quan.value++
+        quan.value++;
         updatePurchaseCount();
 
     }
+
     // 구매 수량 감소 함수
     function countDown() {
         if (purchaseCount > 0) {
             purchaseCount--;
-            quan.value--
+            quan.value--;
             updatePurchaseCount();
         }
 
     }
+
     // 구매 수량 화면 업데이트 함수
     function updatePurchaseCount() {
 
@@ -98,27 +108,24 @@
         }
 
     }
+
     // 페이지 로드 시 초기화 함수 호출
     initialize();
 
-    let username = '${login.username}';
     $(document).ready(function() {
         $("#submitBuy").click(function() {
-            var productId = ${p.productId}; // 제품 ID 설정
-
             $.ajax({
                 type: "POST",
                 url: "/purchase/check",
                 data: {
-                    productId: productId,
-                    quantity: quan
+                    productId: pid,
+                    quantity: quan.value
                 },
                 success: function(response) {
-                    window.location.href = "/purchase?username=" + username;
-                    window.location.reload();
+                    window.location.href = "/purchase";
                 },
                 error: function() {
-                    console.error('리뷰 등록 실패');
+                    console.error('구매 실패');
                 }
             });
         });

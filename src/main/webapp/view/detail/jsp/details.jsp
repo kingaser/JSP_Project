@@ -38,12 +38,12 @@
                     <td>${p.price}</td>
                     <td>
                         <form action="/purchase/check?id=" method="get">
-                            <button class="to-add" type="submit" name="id" value="${p.productId}">즉시 구매</button>
+                            <button class="to-add" type="submit" name="id" value="${p.productId}">구매 하기</button>
                         </form>
                     </td>
                     <td>
                         <form action="/basket/register" method="post">
-                            <button class="to-basket" name="id" value="${p.productId}">추가</button>
+                            <button class="to-basket" name="productId" value="${p.productId}">추가</button>
                         </form>
                     </td>
                 </tr>

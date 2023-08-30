@@ -42,7 +42,7 @@
                 <th width="20%">제목</th>
                 <th width="15%">저자</th>
                 <th width="15%">가격</th>
-                <th width="10%">리뷰</th>
+                <th width="10%">재고</th>
                 <th width="25%">비고</th>
             </tr>
             </thead>
