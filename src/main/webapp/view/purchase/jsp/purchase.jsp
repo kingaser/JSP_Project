@@ -9,11 +9,11 @@
     <title>purchase</title>
     <script src="/js/includeHTML.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="/css/purchase.css"/>
-    <link rel="stylesheet" type="text/css" href="/css/Style.css"/>
+    <link rel="stylesheet" type="text/css" href="../../../css/purchase.css"/>
+    <link rel="stylesheet" type="text/css" href="../../../css/Style.css"/>
 </head>
 <body>
-<header class="header" include-html="project-header.html"></header>
+<jsp:include page="/view/header/jsp/header.jsp"/>
 
 <main class="main">
     <div class="purchase-wrapper">
@@ -61,7 +61,7 @@
         </div>
     </div>
 </main>
-<footer class="footer" include-html="project-footer.html"></footer>
+<jsp:include page="/view/footer/jsp/footer.jsp"/>
 </body>
 
 <script>

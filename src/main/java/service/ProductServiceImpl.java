@@ -48,4 +48,9 @@ public class ProductServiceImpl implements ProductService {
 		return productDao.selectAll();
 	}
 
+	@Override
+	public List<Product> getSearchProducts(String title) {
+		return productDao.searchByTitle(title);
+	}
+
 }

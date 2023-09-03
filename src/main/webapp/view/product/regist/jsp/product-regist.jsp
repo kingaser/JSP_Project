@@ -7,17 +7,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>product-regist</title>
     <script src="js/includeHTML.js"></script>
-    <link rel="stylesheet" type="text/css" href="/css/regist.css"/>
-    <link rel="stylesheet" type="text/css" href="/css/Style.css"/>
+    <link rel="stylesheet" type="text/css" href="../../../../css/regist.css"/>
+    <link rel="stylesheet" type="text/css" href="../../../../css/Style.css"/>
     <link rel="icon" href="images/favicon.jpg">
 </head>
 
 <body>
-<jsp:include page="/view/header/jsp/header.jsp"/>
-<main class="main">
+
     <div class="regist-body">
         <form action="/product/add" method="post" enctype="multipart/form-data">
-            <img src="/images/logo.jpg" alt=""/>
+            <a href="/">
+                <img class="logo" src="../../images/2nd_project_logo.jpg" alt="logo"/>
+            </a>
             <div class="container" id="container">
                 <div class="form-container regist-product-container">
                     <h1>상품 등록</h1>
@@ -37,7 +38,5 @@
             </div>
         </form>
     </div>
-</main>
-<footer class="footer" include-html="project-footer.html"></footer>
 </body>
 </html>

@@ -40,12 +40,18 @@ public class ProductController extends HttpServlet {
 			List<Product> list = productService.getProducts();
 			request.setAttribute("list", list);
 
-
 			str = "/view/product/.jsp";
 		} else if (command.equals("detailProduct")) {
 			String title = request.getParameter("title");
 			Product product = productService.getProductByTitle(title);
 			request.setAttribute("product", product);
+
+			str = "/view/product/.jsp";
+		}else if (command.equals("searchProduct")) {
+			System.out.println("as");
+			String title = request.getParameter("title");
+			List<Product> list = productService.getSearchProducts(title);
+			request.setAttribute("list", list);
 
 			str = "/view/product/.jsp";
 		}

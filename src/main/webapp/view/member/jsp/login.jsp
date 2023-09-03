@@ -9,16 +9,11 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" type="text/css" href="css/login.css">
+    <title>7DAYS Login</title>
+    <link rel="stylesheet" type="text/css" href="../../../css/login.css">
     <link rel="icon" href="images/favicon.jpg">
-
-    <script>
-
-    </script>
 </head>
 <body>
-
 <a href="/">
     <img class="logo" src="images/2nd_project_logo.jpg" alt="logo"/>
 </a>

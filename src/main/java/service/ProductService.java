@@ -17,4 +17,5 @@ public interface ProductService {
 	Product getProduct(int id);
 
 	List<Product> getProducts();
+	List<Product> getSearchProducts(String title);
 }

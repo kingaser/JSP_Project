@@ -4,13 +4,15 @@
 }
 
 .regist-body {
+  background: #FFFFFF;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  height: 80vh;
-}
+  font-family: 'Montserrat', sans-serif;
+  margin: auto 0;
 
+}
 h1 {
   font-weight: bold;
   margin: 0;
@@ -102,6 +104,7 @@ input {
 }
 
 .regist-product-container {
+  margin-top: 35px;
   right: 0;
   width: 50%;
   z-index: 2;

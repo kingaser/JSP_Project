@@ -9,7 +9,7 @@
 <head>
     <meta charset="UTF-8">
     <title>7DAYS Signup</title>
-    <link rel="stylesheet" type="text/css" href="css/signup.css">
+    <link rel="stylesheet" type="text/css" href="../../../css/signup.css">
     <link rel="icon" href="images/favicon.jpg">
     <script type="text/javascript">
         function checkFun() {
@@ -50,19 +50,18 @@
 <a href="/">
     <img class="logo" src="images/2nd_project_logo.jpg" alt="logo"/>
 </a>
-<form name="signupForm" action="signup" method="post">
-    <div class="container" id="container">
-        <div class="form-container sign-in-container">
-            <form action="#">
-                <h1>Information</h1>
-                <input type="text" name="userId" placeholder="아이디를 입력하세요"/>
-                <input type="password" name="password" placeholder="비밀번호를 입력하세요"/>
-                <input type="text" name="tel" placeholder="전화번호를 입력하세요"/>
-                <input type="text" name="address" placeholder="주소를 입력하세요"/>
-                <button type="submit" onclick="return checkFun()">Sign up</button>
-            </form>
-        </div>
-        <form action="login" method="get">
+<div class="container" id="container">
+    <div class="form-container sign-in-container">
+        <form name="signupForm" action="signup" method="post">
+            <h1>Information</h1>
+            <input type="text" name="userId" placeholder="아이디를 입력하세요"/>
+            <input type="password" name="password" placeholder="비밀번호를 입력하세요"/>
+            <input type="text" name="tel" placeholder="전화번호를 입력하세요"/>
+            <input type="text" name="address" placeholder="주소를 입력하세요"/>
+            <button type="submit" onclick="return checkFun()">Sign up</button>
+        </form>
+    </div>
+    <form action="login" method="get">
         <div class="overlay-container">
             <div class="overlay">
                 <div class="overlay-panel overlay-left">
@@ -72,8 +71,7 @@
                 </div>
             </div>
         </div>
-        </form>
-    </div>
-</form>
+    </form>
+</div>
 </body>
 </html>

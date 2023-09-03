@@ -9,8 +9,8 @@
     <title>details</title>
     <script src="/js/includeHTML.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="/css/details.css"/>
-    <link rel="stylesheet" type="text/css" href="/css/Style.css"/>
+    <link rel="stylesheet" type="text/css" href="../../..//css/details.css"/>
+    <link rel="stylesheet" type="text/css" href="../../..//css/Style.css"/>
     <link rel="icon" href="/images/favicon.jpg">
 </head>
 <body>
@@ -60,7 +60,7 @@
                     <p class="if-empty-review">등록된 리뷰가 없습니다</p>
                     <c:forEach var="reply" items="${replyList}">
                         <li>
-                            <span>${reply.username}</span>
+                            <span>${reply.username} 님의 리뷰 </span>
                             <p>${reply.content}</p>
                         </li>
                     </c:forEach>
@@ -71,14 +71,14 @@
                     <fieldset class="write-review-fieldset">
                         <legend><h1>리뷰 등록</h1></legend>
                         <textarea name="review" id="review"></textarea>
-                        <button type="button" id="submitReviewButton">리뷰 등록</button>
+                        <button type="button" id="submitReviewButton" class="submitReviewButton">리뷰 등록</button>
                     </fieldset>
                 </form>
             </div>
         </div>
     </div>
 </main>
-<footer class="footer" include-html="project-footer.html"></footer>
+<jsp:include page="/view/footer/jsp/footer.jsp"/>
 </body>
 </html>
 <script>
@@ -99,9 +99,17 @@
                     window.location.reload();
                 },
                 error: function() {
-                    console.error('리뷰 등록 실패');
+                    alert('로그인 해야 리뷰 작성 가능합니다');
                 }
             });
         });
+
+
+        // replyList가 비어있는 경우
+        if (${empty replyList}) {
+            $('.if-empty-review').show(); // 메시지를 표시
+        } else {
+            $('.if-empty-review').hide(); // 메시지를 숨김
+        };
     });
 </script>
