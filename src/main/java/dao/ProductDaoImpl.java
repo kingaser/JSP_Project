@@ -20,7 +20,7 @@ public class ProductDaoImpl implements ProductDao {
         List<Product> list = new ArrayList<>();
         String sql = "select * from product order by PRODUCTID asc";
         try {
-            String url = "jdbc:oracle:thin:@localhost:1521/xepdb1";
+            String url = "jdbc:oracle:thin:@localhost:1521/xe";
             Class.forName("oracle.jdbc.driver.OracleDriver");
             con = DriverManager.getConnection(url, "JSP", "123123");
             pstmt = con.prepareStatement(sql);
@@ -46,7 +46,7 @@ public class ProductDaoImpl implements ProductDao {
         Product product = null;
         String sql = "select * from product where PRODUCTID = ?";
         try {
-            String url = "jdbc:oracle:thin:@localhost:1521/xepdb1";
+            String url = "jdbc:oracle:thin:@localhost:1521/xe";
             Class.forName("oracle.jdbc.driver.OracleDriver");
             Connection con = DriverManager.getConnection(url, "JSP", "123123");
             pstmt = con.prepareStatement(sql);
@@ -69,13 +69,14 @@ public class ProductDaoImpl implements ProductDao {
         return product;
     }
 
+
     @Override
     public void insert(Product product) {
         // TODO Auto-generated method stub
 
         String sql = "insert into product values(productId.nextval,?,?,?,?,?,?)";
         try {
-            String url = "jdbc:oracle:thin:@localhost:1521/xepdb1";
+            String url = "jdbc:oracle:thin:@localhost:1521/xe";
             Class.forName("oracle.jdbc.driver.OracleDriver");
             con = DriverManager.getConnection(url, "JSP", "123123");
             pstmt = con.prepareStatement(sql);
@@ -101,7 +102,7 @@ public class ProductDaoImpl implements ProductDao {
         // TODO Auto-generated method stub
         String sql = "update product set quantity=? where productId=?";
         try {
-            String url = "jdbc:oracle:thin:@localhost:1521/xepdb1";
+            String url = "jdbc:oracle:thin:@localhost:1521/xe";
             Class.forName("oracle.jdbc.driver.OracleDriver");
             con = DriverManager.getConnection(url, "JSP", "123123");
             pstmt = con.prepareStatement(sql);
@@ -122,7 +123,7 @@ public class ProductDaoImpl implements ProductDao {
         // TODO Auto-generated method stub
         String sql = "delete from product where title=?";
         try {
-            String url = "jdbc:oracle:thin:@localhost:1521/xepdb1";
+            String url = "jdbc:oracle:thin:@localhost:1521/xe";
             Class.forName("oracle.jdbc.driver.OracleDriver");
             con = DriverManager.getConnection(url, "JSP", "123123");
             pstmt = con.prepareStatement(sql);
@@ -140,6 +141,32 @@ public class ProductDaoImpl implements ProductDao {
     @Override
     public Product selectByTitle(String title) {
         return null;
+    }
+
+    @Override
+    public List<Product> searchByTitle(String title) {
+        List<Product> list = new ArrayList<>();
+        String sql = "select * from product where title like '%' || ? || '%' order by productid asc";
+        try {
+            String url = "jdbc:oracle:thin:@localhost:1521/xe";
+            Class.forName("oracle.jdbc.driver.OracleDriver");
+            con = DriverManager.getConnection(url, "JSP", "123123");
+            pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, title);
+            ResultSet rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+                list.add(new Product(rs.getInt("PRODUCTID"), rs.getString("TITLE"), rs.getString("AUTHOR"),
+                        rs.getString("PRICE"), rs.getString("QUANTITY"), rs.getString("IMAGE"), rs.getString("CONTENT")));
+            }
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return list;
     }
 
 }

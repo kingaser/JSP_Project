@@ -6,21 +6,21 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>purchase-list</title>
+    <title>member-list</title>
     <script src="js/includeHTML.js"></script>
-    <link rel="stylesheet" type="text/css" href="css/member-manager.css"/>
-    <link rel="stylesheet" type="text/css" href="css/Style.css"/>
+    <link rel="stylesheet" type="text/css" href="../../../../css/member-manager.css"/>
+    <link rel="stylesheet" type="text/css" href="../../../../css/Style.css"/>
     <link rel="icon" href="images/favicon.jpg">
 </head>
 <body>
 <jsp:include page="/view/header/jsp/header.jsp"/>
 <main class="main">
-    <div class="purchase-list-wrapper">
-        <div class="purchase-list-title">
+    <div class="member-list-wrapper">
+        <div class="member-list-title">
             <h1>회원 목록</h1>
         </div>
         <div class="table-container">
-            <table class="purchase-list-table">
+            <table class="member-list-table">
                 <thead>
                 <tr>
                     <th width="50%">회원 번호</th>
@@ -38,7 +38,7 @@
                         <th class="align-center" width="10%">${member.address}</th>
                         <th class="align-center" width="10%">${member.role}</th>
                         <th class="align-center" width="10%">
-                            <button type="submit" onclick="deleteMember(${member.memberId})">
+                            <button class="delete-member-button" type="submit" onclick="deleteMember(${member.memberId})">
                                 회원 삭제
                             </button>
                         </th>
@@ -49,7 +49,7 @@
         </div>
     </div>
 </main>
-<footer class="footer" include-html="project-footer.html"></footer>
+<jsp:include page="/view/footer/jsp/footer.jsp"/>
 </body>
 </html>
 <script>

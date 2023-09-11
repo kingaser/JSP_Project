@@ -1,3 +1,30 @@
+@font-face {
+  font-family: "Hangeuljaemin4-Regular";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-1@1.1/Hangeuljaemin4-Regular.woff2")
+  format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "KOTRAHOPE";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2110@1.0/KOTRAHOPE.woff2")
+  format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Ramche";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-1@1.1/Ramche.woff2")
+  format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Grandiflora+One&family=Orbit&display=swap");
+* {
+  font-family: "Ramche", serif;
+  /* font-family: "Orbit", sans-serif; */
+}
 /* 전체 초기화 */
 body,
 html {
@@ -18,24 +45,24 @@ footer {
   bottom: 0;
 }
 
-/* 부분별 페이지 길이 */
-.header a {
+/* 헤더 */
+
+/* 로그인 안했을시 헤더 // 보여지고 싶으면 display : flex 안보여줄건 none */
+
+#header-container,#header-container-with-login,#header-container-with-manager-login {
+  background-color: rgb(175, 196, 238);
+  padding-left: 10%;
+  padding-right: 10%;
+  justify-content: space-between;
+  align-items: center;
+}
+.go-home,
+#header-container-with-manager-login  a {
   text-decoration: none;
   color: black;
 }
 .header a:hover {
-  text-decoration: underline;
   font-weight: bold;
-}
-
-/* 헤더 */
-.header-container {
-  background-color: rgb(175, 196, 238);
-  padding-left: 10%;
-  padding-right: 10%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 }
 
 .header-menu a:hover,
@@ -86,4 +113,11 @@ footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+.footer-container h5 {
+  font-size: 10px;
+}
+
+button:hover {
+  font-weight: bold;
 }

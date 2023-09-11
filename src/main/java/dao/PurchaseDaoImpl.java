@@ -24,7 +24,7 @@ public class PurchaseDaoImpl implements PurchaseDao {
 				"where a.memberid = ? " +
 				"order by purchaseId desc";
 		try {
-			String url = "jdbc:oracle:thin:@localhost:1521/xepdb1";
+			String url = "jdbc:oracle:thin:@localhost:1521/xe";
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			con = DriverManager.getConnection(url, "JSP", "123123");
 			pstmt = con.prepareStatement(sql);
@@ -51,7 +51,7 @@ public class PurchaseDaoImpl implements PurchaseDao {
 		// TODO Auto-generated method stub
 		String sql = "insert into purchase values(purchaseId.nextval,?,?,?,?,?)";
 		try {
-			String url = "jdbc:oracle:thin:@localhost:1521/xepdb1";
+			String url = "jdbc:oracle:thin:@localhost:1521/xe";
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			con = DriverManager.getConnection(url, "JSP", "123123");
 			pstmt = con.prepareStatement(sql);

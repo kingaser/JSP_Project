@@ -61,10 +61,7 @@ th {
   width: 70%;
 }
 .continue-shopping {
-  border: none;
   padding: 5px 10px;
-  color: #000;
-  font-weight: bold;
 }
 
 .continue-shopping,
@@ -73,11 +70,16 @@ th {
   border: none;
   height: 28px;
   font-weight: normal;
+  color: #ffffff;
+  border-radius: 5px;
+
 }
 .continue-shopping:hover,
 .go-to-basket-list:hover {
   text-decoration: underline;
   font-weight: bold;
+  text-underline-offset: 5px;
+
 }
 .purchase-list-buttons2 {
   margin: 0 4px;
