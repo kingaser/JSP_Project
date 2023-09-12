@@ -9,7 +9,7 @@
 <head>
     <meta charset="UTF-8">
     <title>7DAYS Signup</title>
-    <link rel="stylesheet" type="text/css" href="../../../css/signup.css">
+    <link rel="stylesheet" type="text/css" href="/css/signup.css">
     <link rel="icon" href="images/favicon.jpg">
     <script type="text/javascript">
         function checkFun() {

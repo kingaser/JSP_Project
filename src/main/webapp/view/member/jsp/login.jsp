@@ -10,7 +10,7 @@
 <head>
     <meta charset="UTF-8">
     <title>7DAYS Login</title>
-    <link rel="stylesheet" type="text/css" href="../../../css/login.css">
+    <link rel="stylesheet" type="text/css" href="/css/login.css">
     <link rel="icon" href="images/favicon.jpg">
 </head>
 <body>
@@ -24,7 +24,7 @@
             <input type="hidden" name="command" value="login">
             <input type="text" name="username" placeholder="아이디를 입력하세요"/>
             <input type="password" name="password" placeholder="비밀번호를 입력하세요"/>
-            <button type="submit" name="inOut" value="1">Log in</button>
+            <button type="submit">Log in</button>
         </form>
     </div>
     <form action="signup" method="get">

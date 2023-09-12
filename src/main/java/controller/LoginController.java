@@ -7,6 +7,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import service.MemberService;
 import service.MemberServiceImpl;
 
 import java.io.IOException;
@@ -14,7 +15,7 @@ import java.io.IOException;
 @WebServlet("/login")
 public class LoginController extends HttpServlet {
 
-    private HttpSession session;
+    private MemberService memberService;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -28,29 +29,23 @@ public class LoginController extends HttpServlet {
 
 //      아래 코드를 써줘야 글씨 안깨짐
         response.setContentType("text/html; charset=UTF-8");
+        memberService = new MemberServiceImpl();
 
         String username = request.getParameter("username");
         String password = request.getParameter("password");
 
-        Member m = new Member();
-        m.setUsername(username);
-        m.setPassword(password);
+        Member login = memberService.login(username, password);
+        HttpSession session = request.getSession();
 
-        Member login = new MemberServiceImpl().login(m);
-
-
-        if (login != null&&login.getRole().equals("admin")) {
-            HttpSession session = request.getSession();
+        if (login != null && login.getRole().equals("admin")) {
             session.setAttribute("login", login);
-            session.setAttribute("admin",login.getRole());
+            session.setAttribute("admin", login.getRole());
 //          15분 세션유지
             session.setMaxInactiveInterval(15 * 60);
             System.out.println("관리자님 환영해요");
 
             response.sendRedirect("/");
-        } else if (login!=null) {
-            HttpSession session = request.getSession();
-
+        } else if (login != null) {
             session.setAttribute("login", login);
 //          15분 세션유지
             session.setMaxInactiveInterval(15 * 60);

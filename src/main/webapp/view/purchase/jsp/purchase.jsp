@@ -9,12 +9,12 @@
     <title>purchase</title>
     <script src="/js/includeHTML.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="../../../css/purchase.css"/>
-    <link rel="stylesheet" type="text/css" href="../../../css/Style.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/purchase.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/Style.css"/>
+    <link rel="icon" href="images/favicon.jpg">
 </head>
 <body>
 <jsp:include page="/view/header/jsp/header.jsp"/>
-
 <main class="main">
     <div class="purchase-wrapper">
         <div class="purchase-table-wrapper">

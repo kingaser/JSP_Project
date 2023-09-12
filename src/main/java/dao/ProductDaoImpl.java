@@ -20,7 +20,7 @@ public class ProductDaoImpl implements ProductDao {
         List<Product> list = new ArrayList<>();
         String sql = "select * from product order by PRODUCTID asc";
         try {
-            String url = "jdbc:oracle:thin:@localhost:1521/xe";
+            String url = "jdbc:oracle:thin:@localhost:1521/xepdb1";
             Class.forName("oracle.jdbc.driver.OracleDriver");
             con = DriverManager.getConnection(url, "JSP", "123123");
             pstmt = con.prepareStatement(sql);
@@ -46,9 +46,9 @@ public class ProductDaoImpl implements ProductDao {
         Product product = null;
         String sql = "select * from product where PRODUCTID = ?";
         try {
-            String url = "jdbc:oracle:thin:@localhost:1521/xe";
+            String url = "jdbc:oracle:thin:@localhost:1521/xepdb1";
             Class.forName("oracle.jdbc.driver.OracleDriver");
-            Connection con = DriverManager.getConnection(url, "JSP", "123123");
+            con = DriverManager.getConnection(url, "JSP", "123123");
             pstmt = con.prepareStatement(sql);
             pstmt.setInt(1, id);
             ResultSet rs = pstmt.executeQuery();
@@ -76,7 +76,7 @@ public class ProductDaoImpl implements ProductDao {
 
         String sql = "insert into product values(productId.nextval,?,?,?,?,?,?)";
         try {
-            String url = "jdbc:oracle:thin:@localhost:1521/xe";
+            String url = "jdbc:oracle:thin:@localhost:1521/xepdb1";
             Class.forName("oracle.jdbc.driver.OracleDriver");
             con = DriverManager.getConnection(url, "JSP", "123123");
             pstmt = con.prepareStatement(sql);
@@ -102,7 +102,7 @@ public class ProductDaoImpl implements ProductDao {
         // TODO Auto-generated method stub
         String sql = "update product set quantity=? where productId=?";
         try {
-            String url = "jdbc:oracle:thin:@localhost:1521/xe";
+            String url = "jdbc:oracle:thin:@localhost:1521/xepdb1";
             Class.forName("oracle.jdbc.driver.OracleDriver");
             con = DriverManager.getConnection(url, "JSP", "123123");
             pstmt = con.prepareStatement(sql);
@@ -123,7 +123,7 @@ public class ProductDaoImpl implements ProductDao {
         // TODO Auto-generated method stub
         String sql = "delete from product where title=?";
         try {
-            String url = "jdbc:oracle:thin:@localhost:1521/xe";
+            String url = "jdbc:oracle:thin:@localhost:1521/xepdb1";
             Class.forName("oracle.jdbc.driver.OracleDriver");
             con = DriverManager.getConnection(url, "JSP", "123123");
             pstmt = con.prepareStatement(sql);
@@ -148,7 +148,7 @@ public class ProductDaoImpl implements ProductDao {
         List<Product> list = new ArrayList<>();
         String sql = "select * from product where title like '%' || ? || '%' order by productid asc";
         try {
-            String url = "jdbc:oracle:thin:@localhost:1521/xe";
+            String url = "jdbc:oracle:thin:@localhost:1521/xepdb1";
             Class.forName("oracle.jdbc.driver.OracleDriver");
             con = DriverManager.getConnection(url, "JSP", "123123");
             pstmt = con.prepareStatement(sql);

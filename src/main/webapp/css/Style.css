@@ -20,11 +20,12 @@
   font-style: normal;
 }
 
-@import url("https://fonts.googleapis.com/css2?family=Grandiflora+One&family=Orbit&display=swap");
+/*@import url("https://fonts.googleapis.com/css2?family=Grandiflora+One&family=Orbit&display=swap");
 * {
   font-family: "Ramche", serif;
-  /* font-family: "Orbit", sans-serif; */
-}
+  !* font-family: "Orbit", sans-serif; *!
+}*/
+
 /* 전체 초기화 */
 body,
 html {

@@ -6,10 +6,10 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>index</title>
-    <script src="js/includeHTML.js"></script>
-    <link rel="stylesheet" type="text/css" href="../../../css/index.css"/>
-    <link rel="stylesheet" type="text/css" href="../../../css/Style.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/index.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/Style.css"/>
     <link rel="icon" href="images/favicon.jpg">
+    <script src="js/includeHTML.js"></script>
 </head>
 <body>
 <jsp:include page="/view/header/jsp/header.jsp"/>

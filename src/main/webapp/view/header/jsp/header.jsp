@@ -4,7 +4,6 @@
     Object adminAttribute = session.getAttribute("admin");
     boolean isAdmin = adminAttribute != null && adminAttribute.equals("admin");
 %>
-<link rel="stylesheet" type="text/css" href="../../../css/Style.css"/>
 
 <div id="header-container">
     <a class="go-home" href="/"><h1>개발자를 위한 온라인 북스토어</h1></a>

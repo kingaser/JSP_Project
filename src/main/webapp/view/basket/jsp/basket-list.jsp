@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>basket-list</title>
     <script src="js/includeHTML.js"></script>
-    <link rel="stylesheet" type="text/css" href="../../../css/basket-list.css"/>
-    <link rel="stylesheet" type="text/css" href="../../../css/Style.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/basket-list.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/Style.css"/>
     <link rel="icon" href="images/favicon.jpg">
 </head>
 <body>
@@ -30,28 +30,29 @@
                     <th class="align-center" width="5%">삭제</th>
                 </tr>
                 </thead>
-                <%--                <c:if test="${!empty list[0].title}">--%>
-                <tbody>
-                <c:forEach var="b" items="${list}">
-                    <tr>
-                        <td><img src="${b.image}"/></td>
-                        <td align="center">${b.title}</td>
-                        <td>${b.price}</td>
-                        <td class="align-center">
-                            <form action="/purchase/check?id=" method="get">
-                                <button class="purchase" type="submit" name="id" value="${b.b_productId}">구매 하기</button>
-                            </form>
-                        </td>
-                        <td class="align-center">
-                            <form action="/basket" method="post">
-                                <button class="delete" type="submit" name="basketId" value="${b.basketId}">삭제
-                                </button>
-                            </form>
-                        </td>
-                    </tr>
-                </c:forEach>
-                </tbody>
-                <%--                </c:if>--%>
+                <c:if test="${!empty list[0].title}">
+                    <tbody>
+                    <c:forEach var="b" items="${list}">
+                        <tr>
+                            <td><img src="${b.image}"/></td>
+                            <td align="center">${b.title}</td>
+                            <td>${b.price}</td>
+                            <td class="align-center">
+                                <form action="/purchase/check?id=" method="get">
+                                    <button class="purchase" type="submit" name="id" value="${b.b_productId}">구매 하기
+                                    </button>
+                                </form>
+                            </td>
+                            <td class="align-center">
+                                <form action="/basket" method="post">
+                                    <button class="delete" type="submit" name="basketId" value="${b.basketId}">삭제
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    </c:forEach>
+                    </tbody>
+                </c:if>
             </table>
         </div>
         <div class="basket-buttons2">

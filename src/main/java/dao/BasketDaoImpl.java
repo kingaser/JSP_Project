@@ -24,7 +24,7 @@ public class BasketDaoImpl implements BasketDao {
 				"order by a.username asc";
 
 		try {
-			String url = "jdbc:oracle:thin:@localhost:1521/xe";
+			String url = "jdbc:oracle:thin:@localhost:1521/xepdb1";
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			con = DriverManager.getConnection(url, "JSP", "123123");
 			pstmt = con.prepareStatement(sql);
@@ -57,7 +57,7 @@ public class BasketDaoImpl implements BasketDao {
 		Basket basket = null;
 		String sql = "select * from (select * from member m left join basket b on m.memberId=b.b_memberId order by m.username asc) a left join product p on a.b_productId=p.productId where a.username=? order by a.username asc";
 		try {
-			String url = "jdbc:oracle:thin:@localhost:1521/xe";
+			String url = "jdbc:oracle:thin:@localhost:1521/xepdb1";
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			con = DriverManager.getConnection(url, "JSP", "123123");
 			pstmt = con.prepareStatement(sql);
@@ -85,7 +85,7 @@ public class BasketDaoImpl implements BasketDao {
 		String sql = "insert into basket values(basketId.nextval,?,?)";
 
 		try {
-			String url = "jdbc:oracle:thin:@localhost:1521/xe";
+			String url = "jdbc:oracle:thin:@localhost:1521/xepdb1";
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			con = DriverManager.getConnection(url, "JSP", "123123");
 			pstmt = con.prepareStatement(sql);
@@ -113,7 +113,7 @@ public class BasketDaoImpl implements BasketDao {
 		// TODO Auto-generated method stub
 		String sql = "delete from basket where basketId=?";
 		try {
-			String url = "jdbc:oracle:thin:@localhost:1521/xe";
+			String url = "jdbc:oracle:thin:@localhost:1521/xepdb1";
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			con = DriverManager.getConnection(url, "JSP", "123123");
 			pstmt = con.prepareStatement(sql);

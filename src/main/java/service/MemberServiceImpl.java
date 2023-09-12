@@ -12,7 +12,7 @@ public class MemberServiceImpl implements MemberService {
         List<Member> list = new ArrayList<>();
         String sql = "select * from member where role = ? order by memberId desc";
         try {
-            String url = "jdbc:oracle:thin:@localhost:1521/xe";
+            String url = "jdbc:oracle:thin:@localhost:1521/xepdb1";
             Class.forName("oracle.jdbc.driver.OracleDriver");
             Connection con = DriverManager.getConnection(url, "JSP", "123123");
             PreparedStatement pstmt = con.prepareStatement(sql);
@@ -46,7 +46,7 @@ public class MemberServiceImpl implements MemberService {
         int result = 0;
         String sql = "insert into member(memberId, username, password, address, tel, role) values(memberId.nextval,?,?,?,?,'USER')";
         try {
-            String url = "jdbc:oracle:thin:@localhost:1521/xe";
+            String url = "jdbc:oracle:thin:@localhost:1521/xepdb1";
             Class.forName("oracle.jdbc.driver.OracleDriver");
             Connection con = DriverManager.getConnection(url, "JSP", "123123");
             PreparedStatement pstmt = con.prepareStatement(sql);
@@ -74,7 +74,7 @@ public class MemberServiceImpl implements MemberService {
         int result = 0;
         String sql = "update member set password=? where username=?";
         try {
-            String url = "jdbc:oracle:thin:@localhost:1521/xe";
+            String url = "jdbc:oracle:thin:@localhost:1521/xepdb1";
             Class.forName("oracle.jdbc.driver.OracleDriver");
             Connection con = DriverManager.getConnection(url, "JSP", "123123");
             PreparedStatement pstmt = con.prepareStatement(sql);
@@ -100,7 +100,7 @@ public class MemberServiceImpl implements MemberService {
         int result = 0;
         String sql = "delete member where id=? and password=?";
         try {
-            String url = "jdbc:oracle:thin:@localhost:1521/xe";
+            String url = "jdbc:oracle:thin:@localhost:1521/xepdb1";
             Class.forName("oracle.jdbc.driver.OracleDriver");
             Connection con = DriverManager.getConnection(url, "JSP", "123123");
             PreparedStatement pstmt = con.prepareStatement(sql);
@@ -122,17 +122,21 @@ public class MemberServiceImpl implements MemberService {
         return result;
     }
 
-    public Member login(Member m) {
+    public Member login(String id, String pw) {
         // TODO Auto-generated method stub
         Member login = null;
+//        if (id.equals("admin") && pw.equals("admin")) {
+//            id = "\'admin\'";
+//            pw = "\'admin\'";
+//        }
         String sql = "select * from member where username=? and password=?";
         try {
-            String url = "jdbc:oracle:thin:@localhost:1521/xe";
+            String url = "jdbc:oracle:thin:@localhost:1521/xepdb1";
             Class.forName("oracle.jdbc.driver.OracleDriver");
             Connection con = DriverManager.getConnection(url, "JSP", "123123");
             PreparedStatement pstmt = con.prepareStatement(sql);
-            pstmt.setString(1, m.getUsername());
-            pstmt.setString(2, m.getPassword());
+            pstmt.setString(1, id);
+            pstmt.setString(2, pw);
             ResultSet rs = pstmt.executeQuery();
 
             if (rs.next()) {
@@ -166,15 +170,10 @@ public class MemberServiceImpl implements MemberService {
     }
 
     @Override
-    public Member login(String username, String passwd) {
-        return null;
-    }
-
-    @Override
     public void deleteMember(String memberId) {
         String sql = "delete from member where memberId = ?";
         try {
-            String url = "jdbc:oracle:thin:@localhost:1521/xe";
+            String url = "jdbc:oracle:thin:@localhost:1521/xepdb1";
             Class.forName("oracle.jdbc.driver.OracleDriver");
             Connection con = DriverManager.getConnection(url, "JSP", "123123");
             PreparedStatement pstmt = con.prepareStatement(sql);
@@ -200,7 +199,7 @@ public class MemberServiceImpl implements MemberService {
 
             String sql = "SELECT * FROM MEMBER WHERE MEMBERID = ?";
 
-            String url = "jdbc:oracle:thin:@localhost:1521/xe";
+            String url = "jdbc:oracle:thin:@localhost:1521/xepdb1";
             Class.forName("oracle.jdbc.driver.OracleDriver");
             Connection con = DriverManager.getConnection(url, "JSP", "123123");
             PreparedStatement pstmt = con.prepareStatement(sql);
@@ -233,7 +232,7 @@ public class MemberServiceImpl implements MemberService {
 
             String sql = "SELECT * FROM MEMBER WHERE USERNAME = ?";
 
-            String url = "jdbc:oracle:thin:@localhost:1521/xe";
+            String url = "jdbc:oracle:thin:@localhost:1521/xepdb1";
             Class.forName("oracle.jdbc.driver.OracleDriver");
             Connection con = DriverManager.getConnection(url, "JSP", "123123");
             PreparedStatement pstmt = con.prepareStatement(sql);

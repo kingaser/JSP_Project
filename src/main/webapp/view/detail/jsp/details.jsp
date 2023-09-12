@@ -7,10 +7,10 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>details</title>
-    <script src="/js/includeHTML.js"></script>
+    <script src="js/includeHTML.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="../../..//css/details.css"/>
-    <link rel="stylesheet" type="text/css" href="../../..//css/Style.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/details.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/Style.css"/>
     <link rel="icon" href="/images/favicon.jpg">
 </head>
 <body>
